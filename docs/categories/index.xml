@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories | Casey Jelsema</title>
+    <link>https://github.com/jelsema/categories/</link>
+      <atom:link href="https://github.com/jelsema/categories/index.xml" rel="self" type="application/rss+xml" />
+    <description>Categories</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <title>Categories</title>
+      <link>https://github.com/jelsema/categories/</link>
+    </image>
+    
+    <item>
+      <title>general</title>
+      <link>https://github.com/jelsema/categories/general/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/categories/general/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lecture</title>
+      <link>https://github.com/jelsema/categories/lecture/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/categories/lecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r package</title>
+      <link>https://github.com/jelsema/categories/r-package/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/categories/r-package/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>talk</title>
+      <link>https://github.com/jelsema/categories/talk/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/categories/talk/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

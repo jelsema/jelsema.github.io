@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Richard Kwok | Casey Jelsema</title>
+    <link>https://github.com/jelsema/authors/richard-kwok/</link>
+      <atom:link href="https://github.com/jelsema/authors/richard-kwok/index.xml" rel="self" type="application/rss+xml" />
+    <description>Richard Kwok</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <title>Richard Kwok</title>
+      <link>https://github.com/jelsema/authors/richard-kwok/</link>
+    </image>
+    
+    <item>
+      <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
+      <link>https://github.com/jelsema/publication/journal-article/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/publication/journal-article/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

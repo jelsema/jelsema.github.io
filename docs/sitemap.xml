@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://github.com/jelsema/courses/example/example1/</loc>
+    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/courses/example/</loc>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/courses/example/example2/</loc>
+    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/project/clme/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/post/</loc>
+    <lastmod>2019-08-14T10:53:53-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/project/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/talk/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/talk/wvu-bios-604-intro-to-spatial/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/post/welcome-to-my-site/</loc>
+    <lastmod>2019-08-14T10:53:53-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/bootstrap/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/general/</loc>
+    <lastmod>2019-08-14T10:53:53-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/greetings/</loc>
+    <lastmod>2019-08-14T10:53:53-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/intro/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/lecture/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/order-restricted-inference/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/package/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/r-package/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/spatial/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/talk/</loc>
+    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/welcome/</loc>
+    <lastmod>2019-08-14T10:53:53-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/admin/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication_types/2/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication_types/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/richard-kwok/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/shyamal-peddada/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/source-themes/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication/journal-article/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/courses/</loc>
+  </url>
+  
+</urlset>
