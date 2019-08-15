@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2 | Casey Jelsema</title>
-    <link>https://github.com/jelsema/publication_types/2/</link>
-      <atom:link href="https://github.com/jelsema/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/publication_types/2/</link>
+      <atom:link href="/jelsema/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>2</title>
-      <link>https://github.com/jelsema/publication_types/2/</link>
+      <link>/jelsema/publication_types/2/</link>
     </image>
     
     <item>
       <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>https://github.com/jelsema/publication/2019-threshold-knots/</link>
+      <link>/jelsema/publication/2019-threshold-knots/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/2019-threshold-knots/</guid>
+      <guid>/jelsema/publication/2019-threshold-knots/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lognormal block kriging with applications to goal geology</title>
-      <link>https://github.com/jelsema/publication/2013-lognormal-coal/</link>
+      <link>/jelsema/publication/2013-lognormal-coal/</link>
       <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/2013-lognormal-coal/</guid>
+      <guid>/jelsema/publication/2013-lognormal-coal/</guid>
       <description></description>
     </item>
     

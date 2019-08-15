@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>r package | Casey Jelsema</title>
-    <link>https://github.com/jelsema/categories/r-package/</link>
-      <atom:link href="https://github.com/jelsema/categories/r-package/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/categories/r-package/</link>
+      <atom:link href="/jelsema/categories/r-package/index.xml" rel="self" type="application/rss+xml" />
     <description>r package</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>r package</title>
-      <link>https://github.com/jelsema/categories/r-package/</link>
+      <link>/jelsema/categories/r-package/</link>
     </image>
     
     <item>
       <title>CLME</title>
-      <link>https://github.com/jelsema/project/clme/</link>
+      <link>/jelsema/project/clme/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/project/clme/</guid>
+      <guid>/jelsema/project/clme/</guid>
       <description>&lt;p&gt;CLME stands for Constrained Linear Mixed Effects. I wrote this R package (&lt;a href=&#34;https://cran.r-project.org/web/packages/CLME/index.html&#34; target=&#34;_blank&#34;&gt;CRAN link&lt;/a&gt;) during my postdoctoral work at NIEHS.&lt;/p&gt;
 
 &lt;p&gt;The fundamental idea is similar to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Jonckheere%27s_trend_test&#34; target=&#34;_blank&#34;&gt;Jonckheere–Terpstra&lt;/a&gt; or any other test for ordered alternatives: If the treatment groups are ordinal, then a trend of some sort may be of interest. If a researcher has such a hypothesis, they can not only &lt;em&gt;test&lt;/em&gt; for the ordered alternative, but they can constrain the &lt;em&gt;estimation&lt;/em&gt; to respect the order from the alternative hypothesis. This results in getting more power than a comparable test that does not impose constraints or test for an order (e.g., ANOVA).&lt;/p&gt;

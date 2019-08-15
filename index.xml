@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Casey Jelsema</title>
-    <link>https://github.com/jelsema/</link>
-      <atom:link href="https://github.com/jelsema/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/</link>
+      <atom:link href="/jelsema/index.xml" rel="self" type="application/rss+xml" />
     <description>Casey Jelsema</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>Casey Jelsema</title>
-      <link>https://github.com/jelsema/</link>
+      <link>/jelsema/</link>
     </image>
     
     <item>
       <title>Example Page 1</title>
-      <link>https://github.com/jelsema/courses/example/example1/</link>
+      <link>/jelsema/courses/example/example1/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>https://github.com/jelsema/courses/example/example1/</guid>
+      <guid>/jelsema/courses/example/example1/</guid>
       <description>
 
 &lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
@@ -49,9 +49,9 @@
     
     <item>
       <title>Example Page 2</title>
-      <link>https://github.com/jelsema/courses/example/example2/</link>
+      <link>/jelsema/courses/example/example2/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>https://github.com/jelsema/courses/example/example2/</guid>
+      <guid>/jelsema/courses/example/example2/</guid>
       <description>
 
 &lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;
@@ -84,9 +84,9 @@
     
     <item>
       <title>CLME</title>
-      <link>https://github.com/jelsema/project/clme/</link>
+      <link>/jelsema/project/clme/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/project/clme/</guid>
+      <guid>/jelsema/project/clme/</guid>
       <description>&lt;p&gt;CLME stands for Constrained Linear Mixed Effects. I wrote this R package (&lt;a href=&#34;https://cran.r-project.org/web/packages/CLME/index.html&#34; target=&#34;_blank&#34;&gt;CRAN link&lt;/a&gt;) during my postdoctoral work at NIEHS.&lt;/p&gt;
 
 &lt;p&gt;The fundamental idea is similar to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Jonckheere%27s_trend_test&#34; target=&#34;_blank&#34;&gt;Jonckheere–Terpstra&lt;/a&gt; or any other test for ordered alternatives: If the treatment groups are ordinal, then a trend of some sort may be of interest. If a researcher has such a hypothesis, they can not only &lt;em&gt;test&lt;/em&gt; for the ordered alternative, but they can constrain the &lt;em&gt;estimation&lt;/em&gt; to respect the order from the alternative hypothesis. This results in getting more power than a comparable test that does not impose constraints or test for an order (e.g., ANOVA).&lt;/p&gt;
@@ -99,9 +99,9 @@
     
     <item>
       <title>WVU BIOS 604 Intro to Spatial</title>
-      <link>https://github.com/jelsema/talk/wvu-bios-604-intro-to-spatial/</link>
+      <link>/jelsema/talk/wvu-bios-604-intro-to-spatial/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/talk/wvu-bios-604-intro-to-spatial/</guid>
+      <guid>/jelsema/talk/wvu-bios-604-intro-to-spatial/</guid>
       <description>
 
 
@@ -112,9 +112,9 @@
     
     <item>
       <title>Welcome to my site</title>
-      <link>https://github.com/jelsema/post/welcome-to-my-site/</link>
+      <link>/jelsema/post/welcome-to-my-site/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/post/welcome-to-my-site/</guid>
+      <guid>/jelsema/post/welcome-to-my-site/</guid>
       <description>&lt;p&gt;Welcome! If you&amp;rsquo;ve found your way to this page &amp;hellip; well, I&amp;rsquo;m more than a little surprised. This is my personal website. I&amp;rsquo;m not entirely sure what I&amp;rsquo;ll be doing here. My plan at the moment is to use it mainly for:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -130,17 +130,35 @@
     
     <item>
       <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>https://github.com/jelsema/publication/2019-threshold-knots/</link>
+      <link>/jelsema/publication/2019-threshold-knots/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/2019-threshold-knots/</guid>
+      <guid>/jelsema/publication/2019-threshold-knots/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Privacy Policy</title>
+      <link>/jelsema/privacy/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <guid>/jelsema/privacy/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Terms</title>
+      <link>/jelsema/terms/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <guid>/jelsema/terms/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Lognormal block kriging with applications to goal geology</title>
-      <link>https://github.com/jelsema/publication/2013-lognormal-coal/</link>
+      <link>/jelsema/publication/2013-lognormal-coal/</link>
       <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/2013-lognormal-coal/</guid>
+      <guid>/jelsema/publication/2013-lognormal-coal/</guid>
       <description></description>
     </item>
     

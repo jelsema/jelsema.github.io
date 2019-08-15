@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Courses | Casey Jelsema</title>
-    <link>https://github.com/jelsema/courses/</link>
-      <atom:link href="https://github.com/jelsema/courses/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/courses/</link>
+      <atom:link href="/jelsema/courses/index.xml" rel="self" type="application/rss+xml" />
     <description>Courses</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>Courses</title>
-      <link>https://github.com/jelsema/courses/</link>
+      <link>/jelsema/courses/</link>
     </image>
     
   </channel>

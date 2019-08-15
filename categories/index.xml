@@ -2,61 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Casey Jelsema</title>
-    <link>https://github.com/jelsema/categories/</link>
-      <atom:link href="https://github.com/jelsema/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/categories/</link>
+      <atom:link href="/jelsema/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>Categories</title>
-      <link>https://github.com/jelsema/categories/</link>
+      <link>/jelsema/categories/</link>
     </image>
     
     <item>
       <title>general</title>
-      <link>https://github.com/jelsema/categories/general/</link>
+      <link>/jelsema/categories/general/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/general/</guid>
+      <guid>/jelsema/categories/general/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lecture</title>
-      <link>https://github.com/jelsema/categories/lecture/</link>
+      <link>/jelsema/categories/lecture/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/lecture/</guid>
+      <guid>/jelsema/categories/lecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>r package</title>
-      <link>https://github.com/jelsema/categories/r-package/</link>
+      <link>/jelsema/categories/r-package/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/r-package/</guid>
+      <guid>/jelsema/categories/r-package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>talk</title>
-      <link>https://github.com/jelsema/categories/talk/</link>
+      <link>/jelsema/categories/talk/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/talk/</guid>
+      <guid>/jelsema/categories/talk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>methods</title>
-      <link>https://github.com/jelsema/categories/methods/</link>
+      <link>/jelsema/categories/methods/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/methods/</guid>
+      <guid>/jelsema/categories/methods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>publication</title>
-      <link>https://github.com/jelsema/categories/publication/</link>
+      <link>/jelsema/categories/publication/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/categories/publication/</guid>
+      <guid>/jelsema/categories/publication/</guid>
       <description></description>
     </item>
     

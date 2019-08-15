@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lecture | Casey Jelsema</title>
-    <link>https://github.com/jelsema/categories/lecture/</link>
-      <atom:link href="https://github.com/jelsema/categories/lecture/index.xml" rel="self" type="application/rss+xml" />
+    <link>/jelsema/categories/lecture/</link>
+      <atom:link href="/jelsema/categories/lecture/index.xml" rel="self" type="application/rss+xml" />
     <description>lecture</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema/img/icon-192.png</url>
+      <url>/jelsema/img/icon-192.png</url>
       <title>lecture</title>
-      <link>https://github.com/jelsema/categories/lecture/</link>
+      <link>/jelsema/categories/lecture/</link>
     </image>
     
     <item>
       <title>WVU BIOS 604 Intro to Spatial</title>
-      <link>https://github.com/jelsema/talk/wvu-bios-604-intro-to-spatial/</link>
+      <link>/jelsema/talk/wvu-bios-604-intro-to-spatial/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/talk/wvu-bios-604-intro-to-spatial/</guid>
+      <guid>/jelsema/talk/wvu-bios-604-intro-to-spatial/</guid>
       <description>
 
 
