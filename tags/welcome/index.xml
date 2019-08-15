@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>welcome | Casey Jelsema</title>
-    <link>https://github.com/jelsema.github.io/tags/welcome/</link>
-      <atom:link href="https://github.com/jelsema.github.io/tags/welcome/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/welcome/</link>
+      <atom:link href="/tags/welcome/index.xml" rel="self" type="application/rss+xml" />
     <description>welcome</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
+      <url>/img/icon-192.png</url>
       <title>welcome</title>
-      <link>https://github.com/jelsema.github.io/tags/welcome/</link>
+      <link>/tags/welcome/</link>
     </image>
     
     <item>
       <title>Welcome to my site</title>
-      <link>https://github.com/jelsema.github.io/post/welcome-to-my-site/</link>
+      <link>/post/welcome-to-my-site/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/post/welcome-to-my-site/</guid>
+      <guid>/post/welcome-to-my-site/</guid>
       <description>&lt;p&gt;Welcome! If you&amp;rsquo;ve found your way to this page &amp;hellip; well, I&amp;rsquo;m more than a little surprised. This is my personal website. I&amp;rsquo;m not entirely sure what I&amp;rsquo;ll be doing here. My plan at the moment is to use it mainly for:&lt;/p&gt;
 
 &lt;ul&gt;

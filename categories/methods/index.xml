@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>methods | Casey Jelsema</title>
-    <link>https://github.com/jelsema.github.io/categories/methods/</link>
-      <atom:link href="https://github.com/jelsema.github.io/categories/methods/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/methods/</link>
+      <atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
     <description>methods</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
+      <url>/img/icon-192.png</url>
       <title>methods</title>
-      <link>https://github.com/jelsema.github.io/categories/methods/</link>
+      <link>/categories/methods/</link>
     </image>
     
     <item>
       <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>https://github.com/jelsema.github.io/publication/2019-threshold-knots/</link>
+      <link>/publication/2019-threshold-knots/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/publication/2019-threshold-knots/</guid>
+      <guid>/publication/2019-threshold-knots/</guid>
       <description></description>
     </item>
     

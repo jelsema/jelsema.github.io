@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors | Casey Jelsema</title>
-    <link>https://github.com/jelsema.github.io/authors/</link>
-      <atom:link href="https://github.com/jelsema.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
+      <url>/img/icon-192.png</url>
       <title>Authors</title>
-      <link>https://github.com/jelsema.github.io/authors/</link>
+      <link>/authors/</link>
     </image>
     
     <item>
       <title></title>
-      <link>https://github.com/jelsema.github.io/authors/admin/</link>
+      <link>/authors/admin/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/authors/admin/</guid>
+      <guid>/authors/admin/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Statistician, currently working as an Assistant Professor of Biostatistics at West Virginia University. My main research interests are spatial statistics and statistical computing, but I also enjoy playing in everyone else&amp;rsquo;s backyard (i.e. collaborations). The backyards I tend to play in most are Forensics and medical applications. I know, that&amp;rsquo;s kind of broad. But working on the health science campus of a university tends to lead to more researchers in search of statistical help than those who can provide it.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Richard Kwok</title>
-      <link>https://github.com/jelsema.github.io/authors/richard-kwok/</link>
+      <link>/authors/richard-kwok/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/authors/richard-kwok/</guid>
+      <guid>/authors/richard-kwok/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shyamal Peddada</title>
-      <link>https://github.com/jelsema.github.io/authors/shyamal-peddada/</link>
+      <link>/authors/shyamal-peddada/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/authors/shyamal-peddada/</guid>
+      <guid>/authors/shyamal-peddada/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rajib Paul</title>
-      <link>https://github.com/jelsema.github.io/authors/rajib-paul/</link>
+      <link>/authors/rajib-paul/</link>
       <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema.github.io/authors/rajib-paul/</guid>
+      <guid>/authors/rajib-paul/</guid>
       <description></description>
     </item>
     
