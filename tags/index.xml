@@ -2,69 +2,69 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags | Casey Jelsema</title>
-    <link>/jelsema/tags/</link>
-      <atom:link href="/jelsema/tags/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://github.com/jelsema.github.io/tags/</link>
+      <atom:link href="https://github.com/jelsema.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/jelsema/img/icon-192.png</url>
+      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
       <title>Tags</title>
-      <link>/jelsema/tags/</link>
+      <link>https://github.com/jelsema.github.io/tags/</link>
     </image>
     
     <item>
       <title>bootstrap</title>
-      <link>/jelsema/tags/bootstrap/</link>
+      <link>https://github.com/jelsema.github.io/tags/bootstrap/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/bootstrap/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/bootstrap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>greetings</title>
-      <link>/jelsema/tags/greetings/</link>
+      <link>https://github.com/jelsema.github.io/tags/greetings/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/greetings/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/greetings/</guid>
       <description></description>
     </item>
     
     <item>
       <title>intro</title>
-      <link>/jelsema/tags/intro/</link>
+      <link>https://github.com/jelsema.github.io/tags/intro/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/intro/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/intro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>order restricted inference</title>
-      <link>/jelsema/tags/order-restricted-inference/</link>
+      <link>https://github.com/jelsema.github.io/tags/order-restricted-inference/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/order-restricted-inference/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/order-restricted-inference/</guid>
       <description></description>
     </item>
     
     <item>
       <title>package</title>
-      <link>/jelsema/tags/package/</link>
+      <link>https://github.com/jelsema.github.io/tags/package/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/package/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spatial</title>
-      <link>/jelsema/tags/spatial/</link>
+      <link>https://github.com/jelsema.github.io/tags/spatial/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/spatial/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/spatial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>welcome</title>
-      <link>/jelsema/tags/welcome/</link>
+      <link>https://github.com/jelsema.github.io/tags/welcome/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/tags/welcome/</guid>
+      <guid>https://github.com/jelsema.github.io/tags/welcome/</guid>
       <description></description>
     </item>
     

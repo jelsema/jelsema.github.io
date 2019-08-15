@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Casey Jelsema</title>
-    <link>/jelsema/authors/admin/</link>
-      <atom:link href="/jelsema/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://github.com/jelsema.github.io/authors/admin/</link>
+      <atom:link href="https://github.com/jelsema.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Casey Jelsema</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/jelsema/img/icon-192.png</url>
+      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
       <title>Casey Jelsema</title>
-      <link>/jelsema/authors/admin/</link>
+      <link>https://github.com/jelsema.github.io/authors/admin/</link>
     </image>
     
     <item>
       <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>/jelsema/publication/2019-threshold-knots/</link>
+      <link>https://github.com/jelsema.github.io/publication/2019-threshold-knots/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/publication/2019-threshold-knots/</guid>
+      <guid>https://github.com/jelsema.github.io/publication/2019-threshold-knots/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lognormal block kriging with applications to goal geology</title>
-      <link>/jelsema/publication/2013-lognormal-coal/</link>
+      <link>https://github.com/jelsema.github.io/publication/2013-lognormal-coal/</link>
       <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>/jelsema/publication/2013-lognormal-coal/</guid>
+      <guid>https://github.com/jelsema.github.io/publication/2013-lognormal-coal/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>/jelsema/authors/admin/</link>
+      <link>https://github.com/jelsema.github.io/authors/admin/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/authors/admin/</guid>
+      <guid>https://github.com/jelsema.github.io/authors/admin/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Statistician, currently working as an Assistant Professor of Biostatistics at West Virginia University. My main research interests are spatial statistics and statistical computing, but I also enjoy playing in everyone else&amp;rsquo;s backyard (i.e. collaborations). The backyards I tend to play in most are Forensics and medical applications. I know, that&amp;rsquo;s kind of broad. But working on the health science campus of a university tends to lead to more researchers in search of statistical help than those who can provide it.&lt;/p&gt;
 </description>
     </item>

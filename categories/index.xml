@@ -2,61 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Casey Jelsema</title>
-    <link>/jelsema/categories/</link>
-      <atom:link href="/jelsema/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://github.com/jelsema.github.io/categories/</link>
+      <atom:link href="https://github.com/jelsema.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/jelsema/img/icon-192.png</url>
+      <url>https://github.com/jelsema.github.io/img/icon-192.png</url>
       <title>Categories</title>
-      <link>/jelsema/categories/</link>
+      <link>https://github.com/jelsema.github.io/categories/</link>
     </image>
     
     <item>
       <title>general</title>
-      <link>/jelsema/categories/general/</link>
+      <link>https://github.com/jelsema.github.io/categories/general/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/general/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/general/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lecture</title>
-      <link>/jelsema/categories/lecture/</link>
+      <link>https://github.com/jelsema.github.io/categories/lecture/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/lecture/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/lecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>r package</title>
-      <link>/jelsema/categories/r-package/</link>
+      <link>https://github.com/jelsema.github.io/categories/r-package/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/r-package/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/r-package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>talk</title>
-      <link>/jelsema/categories/talk/</link>
+      <link>https://github.com/jelsema.github.io/categories/talk/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/talk/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/talk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>methods</title>
-      <link>/jelsema/categories/methods/</link>
+      <link>https://github.com/jelsema.github.io/categories/methods/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/methods/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/methods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>publication</title>
-      <link>/jelsema/categories/publication/</link>
+      <link>https://github.com/jelsema.github.io/categories/publication/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/jelsema/categories/publication/</guid>
+      <guid>https://github.com/jelsema.github.io/categories/publication/</guid>
       <description></description>
     </item>
     
