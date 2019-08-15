@@ -5,7 +5,7 @@
     <link>https://github.com/jelsema/authors/admin/</link>
       <atom:link href="https://github.com/jelsema/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Casey Jelsema</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://github.com/jelsema/img/icon-192.png</url>
       <title>Casey Jelsema</title>
@@ -14,27 +14,24 @@
     
     <item>
       <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>https://github.com/jelsema/publication/threshold-knots/</link>
-      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/threshold-knots/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <link>https://github.com/jelsema/publication/2019-threshold-knots/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/publication/2019-threshold-knots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lognormal block kriging with applications to goal geology</title>
+      <link>https://github.com/jelsema/publication/2013-lognormal-coal/</link>
+      <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/publication/2013-lognormal-coal/</guid>
+      <description></description>
     </item>
     
     <item>
       <title></title>
       <link>https://github.com/jelsema/authors/admin/</link>
-      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       <guid>https://github.com/jelsema/authors/admin/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Statistician, currently working as an Assistant Professor of Biostatistics at West Virginia University. My main research interests are spatial statistics and statistical computing, but I also enjoy playing in everyone else&amp;rsquo;s backyard (i.e. collaborations). The backyards I tend to play in most are Forensics and medical applications. I know, that&amp;rsquo;s kind of broad. But working on the health science campus of a university tends to lead to more researchers in search of statistical help than those who can provide it.&lt;/p&gt;
 </description>

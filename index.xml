@@ -5,7 +5,7 @@
     <link>https://github.com/jelsema/</link>
       <atom:link href="https://github.com/jelsema/index.xml" rel="self" type="application/rss+xml" />
     <description>Casey Jelsema</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://github.com/jelsema/img/icon-192.png</url>
       <title>Casey Jelsema</title>
@@ -83,14 +83,6 @@
     </item>
     
     <item>
-      <title>Lognormal Block Kriging on Coal Geology</title>
-      <link>https://github.com/jelsema/publication/lognormal-block-kriging-on-coal-geology/</link>
-      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/lognormal-block-kriging-on-coal-geology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>CLME</title>
       <link>https://github.com/jelsema/project/clme/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
@@ -102,25 +94,6 @@
 &lt;p&gt;Feel free to check out the &lt;a href=&#34;https://github.com/jelsema/CLME&#34; target=&#34;_blank&#34;&gt;github repository&lt;/a&gt;. There are a variety of improvements I&amp;rsquo;d like to make, including cleaning up my code, removing dependancies, and adding some features. Just need time to get to them. If you&amp;rsquo;d like to join, give me a shout!&lt;/p&gt;
 
 &lt;p&gt;Disclaimer: This is really just a post to get something into the &amp;ldquo;Project&amp;rdquo; space of my website. I&amp;rsquo;ll probably modify this post later to add clarity.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
-      <link>https://github.com/jelsema/publication/threshold-knots/</link>
-      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/publication/threshold-knots/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
@@ -153,6 +126,22 @@
 
 &lt;p&gt;I expect to have a grand total of zero readers. But since you&amp;rsquo;re here, clearly I&amp;rsquo;m mistaken. Enjoy!&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Threshold knot selection for large-scale spatial models with applications to the Deepwater Horizon disaster</title>
+      <link>https://github.com/jelsema/publication/2019-threshold-knots/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/publication/2019-threshold-knots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lognormal block kriging with applications to goal geology</title>
+      <link>https://github.com/jelsema/publication/2013-lognormal-coal/</link>
+      <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/publication/2013-lognormal-coal/</guid>
+      <description></description>
     </item>
     
   </channel>
