@@ -18,20 +18,77 @@
   </url>
   
   <url>
-    <loc>https://github.com/jelsema/project/clme/</loc>
-    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://github.com/jelsema/</loc>
-    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://github.com/jelsema/categories/</loc>
-    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication/lognormal-block-kriging-on-coal-geology/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/compositional-data-analysis/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/methods/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/categories/spatial/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/spatial/</loc>
+    <lastmod>2019-08-15T13:57:28-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/admin/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication_types/2/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/project/clme/</loc>
+    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
   </url>
   
   <url>
@@ -46,14 +103,37 @@
   </url>
   
   <url>
+    <loc>https://github.com/jelsema/publication_types/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://github.com/jelsema/talk/</loc>
     <lastmod>2019-08-14T11:01:25-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://github.com/jelsema/tags/</loc>
-    <lastmod>2019-08-14T11:49:43-04:00</lastmod>
+    <loc>https://github.com/jelsema/authors/richard-kwok/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/authors/shyamal-peddada/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/tags/source-themes/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/jelsema/publication/threshold-knots/</loc>
+    <lastmod>2019-08-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -115,12 +195,6 @@
   </url>
   
   <url>
-    <loc>https://github.com/jelsema/tags/spatial/</loc>
-    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://github.com/jelsema/categories/talk/</loc>
     <lastmod>2019-08-14T11:01:25-04:00</lastmod>
     <priority>0</priority>
@@ -130,57 +204,6 @@
     <loc>https://github.com/jelsema/tags/welcome/</loc>
     <lastmod>2019-08-14T10:53:53-04:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/authors/admin/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/publication_types/2/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/authors/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/publication_types/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/publication/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/authors/richard-kwok/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/authors/shyamal-peddada/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/tags/source-themes/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/jelsema/publication/journal-article/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>

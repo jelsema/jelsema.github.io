@@ -5,12 +5,44 @@
     <link>https://github.com/jelsema/tags/</link>
       <atom:link href="https://github.com/jelsema/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://github.com/jelsema/img/icon-192.png</url>
       <title>Tags</title>
       <link>https://github.com/jelsema/tags/</link>
     </image>
+    
+    <item>
+      <title>compositional data analysis</title>
+      <link>https://github.com/jelsema/tags/compositional-data-analysis/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/tags/compositional-data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>methods</title>
+      <link>https://github.com/jelsema/tags/methods/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/tags/methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spatial</title>
+      <link>https://github.com/jelsema/tags/spatial/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/tags/spatial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Source Themes</title>
+      <link>https://github.com/jelsema/tags/source-themes/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://github.com/jelsema/tags/source-themes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>bootstrap</title>
@@ -53,26 +85,10 @@
     </item>
     
     <item>
-      <title>spatial</title>
-      <link>https://github.com/jelsema/tags/spatial/</link>
-      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/tags/spatial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>welcome</title>
       <link>https://github.com/jelsema/tags/welcome/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https://github.com/jelsema/tags/welcome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Source Themes</title>
-      <link>https://github.com/jelsema/tags/source-themes/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://github.com/jelsema/tags/source-themes/</guid>
       <description></description>
     </item>
     
