@@ -190,14 +190,229 @@
   </url>
   
   <url>
-    <loc>/publication/2013-lognormal-coal/</loc>
-    <lastmod>2013-07-30T00:00:00+00:00</lastmod>
+    <loc>/publication/2018-test-fire2/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/eric-law/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/keith-morris/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/equivalence-testing/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/forensics/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/monte-carlo/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/test-fires/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/ori-davidov/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2018-osin/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/singular/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/amy-hessl/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/baatarbileg-nachin/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/benjamin-cook/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/caroline-leland/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/hanqin-tian/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/kevin-anchukaitis/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/laia-andreu-hayles/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/neil-pederson/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/oyunsanaa-byambasuren/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2018-mongolia-drought/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/collaborative/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/copula/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/drought/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/geography/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mongolia/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2017-test-fire1/</loc>
+    <lastmod>2017-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/2016-clme/</loc>
+    <lastmod>2016-11-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/fred-lih/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/leesa-deterding/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/maria-kadiiska/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2016-joost/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/ronald-mason/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/thomas-joost-vant-erve/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/thomas-eling/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication_types/6/</loc>
+    <lastmod>2015-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2015-frssm/</loc>
+    <lastmod>2015-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/rajib-paul/</loc>
-    <lastmod>2013-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2015-05-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/rex-lau/</loc>
+    <lastmod>2015-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/2013-lognormal-coal/</loc>
+    <lastmod>2013-07-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
