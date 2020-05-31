@@ -5,7 +5,7 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
@@ -15,10 +15,26 @@
     <item>
       <title></title>
       <link>/authors/admin/</link>
-      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Statistician, currently working as part of a statistics group supporting an engineering research lab. My main research interests are spatial statistics and statistical computing, but I also enjoy &amp;ldquo;playing in everyone else&amp;rsquo;s backyard&amp;rdquo; (i.e. collaborations). Some of the backyards I&amp;rsquo;ve played in - from my previous gig as an assistant professor at West Virginia University - include Forensics and medical applications.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Joseph W McKean</title>
+      <link>/authors/joseph-w-mckean/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/joseph-w-mckean/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rajib Paul</title>
+      <link>/authors/rajib-paul/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/rajib-paul/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -178,14 +194,6 @@
       <link>/authors/thomas-eling/</link>
       <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
       <guid>/authors/thomas-eling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rajib Paul</title>
-      <link>/authors/rajib-paul/</link>
-      <pubDate>Thu, 21 May 2015 00:00:00 +0000</pubDate>
-      <guid>/authors/rajib-paul/</guid>
       <description></description>
     </item>
     
