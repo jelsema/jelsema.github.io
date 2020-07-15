@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>welcome | Casey Jelsema</title>
+    <title>welcome | Organized Chaos</title>
     <link>/tags/welcome/</link>
       <atom:link href="/tags/welcome/index.xml" rel="self" type="application/rss+xml" />
     <description>welcome</description>
@@ -14,16 +14,17 @@
     
     <item>
       <title>Welcome to my site</title>
-      <link>/post/welcome-to-my-site/</link>
+      <link>/posto/welcome-to-my-site/</link>
       <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/post/welcome-to-my-site/</guid>
+      <guid>/posto/welcome-to-my-site/</guid>
       <description>&lt;p&gt;Welcome! If you&amp;rsquo;ve found your way to this page &amp;hellip; well, I&amp;rsquo;m more than a little surprised. This is my personal website. I&amp;rsquo;m not entirely sure what I&amp;rsquo;ll be doing here. My plan at the moment is to use it mainly for:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Listing professional things like publications independently of my place of employment.&lt;/li&gt;
 &lt;li&gt;Host the slides for talks or workshops that I give.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I may have some posts (is that &amp;lsquo;blogging&amp;rsquo;? Save me!) about topics that pique my interest. This would likely be my thoughts on some bit of Statistics or science that came across my screen. But who knows, maybe I&amp;rsquo;ll post about Lord of the Rings or some other fantasy or sci-fi that I enjoy.&lt;/p&gt;
-&lt;p&gt;I expect to have a grand total of zero readers. But since you&amp;rsquo;re here, clearly I&amp;rsquo;m mistaken. Enjoy!&lt;/p&gt;
+&lt;p&gt;I may have some posts (is that &amp;lsquo;blogging&amp;rsquo;? Save me!) about topics that pique my interest. This would likely be my thoughts on some bit of Statistics or science that came across my screen.&lt;/p&gt;
+&lt;p&gt;Update (2020-15-07):&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been talking about science and statistics in the context of COVID-19 on social media for a while now. I may transition some of that here, since social media isn&amp;rsquo;t usually conducive to the long-form comments I make often enough.&lt;/p&gt;
 </description>
     </item>
     
