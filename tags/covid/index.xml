@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>covid | Organized Chaos</title>
+    <link>/tags/covid/</link>
+      <atom:link href="/tags/covid/index.xml" rel="self" type="application/rss+xml" />
+    <description>covid</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>covid</title>
+      <link>/tags/covid/</link>
+    </image>
+    
+    <item>
+      <title>A Scientific Smell Test</title>
+      <link>/post-other/a-scientific-smell-test/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/post-other/a-scientific-smell-test/</guid>
+      <description>&lt;h2 id=&#34;the-short-version&#34;&gt;The short version&lt;/h2&gt;
+&lt;p&gt;When encountering scientific claims - or really any objective claim - it can be difficult to know what to believe, especially when there seems to be conflicting stories. In the world of COVID-19 shutdowns and stay-at-home orders, it can be hard to parse through the deluge of information and figure out what&amp;rsquo;s going on. The following set of questions can serve as a sort of &amp;ldquo;smell test&amp;rdquo; to get an initial sense of the validity of the claims at hand.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Who or what is the source? Why should we listen to them?&lt;/li&gt;
+&lt;li&gt;Are they citing sources or presenting data?&lt;/li&gt;
+&lt;li&gt;What is their expertise?&lt;/li&gt;
+&lt;li&gt;Are the claims extravagant?&lt;/li&gt;
+&lt;li&gt;Does the source have a known bias?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-long-version&#34;&gt;The long version&lt;/h2&gt;
+&lt;p&gt;The COVID-19 pandemic rather abruptly thrust science into peoples&amp;rsquo; faces.
+In a very short timeframe we went from ordinary news,
+to &amp;ldquo;There&amp;rsquo;s an outbreak in China,&amp;rdquo; to &amp;ldquo;It&amp;rsquo;s spreading worldwide,&amp;rdquo;
+to &amp;ldquo;It&amp;rsquo;s here and governors are issuing expansive shutdowns and stay-at-home orders.&amp;rdquo; People were suddenly inundated statistical claims and scientific results (as of July 20, 2020, &lt;a href=&#34;https://www.natureindex.com/news-blog/the-top-coronavirus-research-articles-by-metrics&#34;&gt;Nature&lt;/a&gt; reported there to be 65,470 scientific papers on COVID-19).&lt;/p&gt;
+&lt;p&gt;The problem is that most people are not statisticians or epidemiologists. Most people are not microbiologists, immunologists, or researchers in a slew of other biomedical fields. Most people are not highly trained in research methods and reading the results.&lt;/p&gt;
+&lt;p&gt;A constantly updating deluge of technical information that most people have a difficult time understanding creates a prime situation for misinformation, confirmation bias, and conspiracy theories to propagate. We have seen much of this in the course of the COVID-19 pandemic.&lt;/p&gt;
+&lt;p&gt;My intent in this post is to give a few questions you can ask yourself to assess new information - whether it&amp;rsquo;s a scientific article, a news report, or a post on social media. My set of questions is not exhaustive, but represents a fairly good first pass to sort out what is reliable from what is not. Many of the claims that I&amp;rsquo;ve seen posted across social media fail at least one, if not several or all, of the questions on my list.&lt;/p&gt;
+&lt;h4 id=&#34;question-1-who-or-what-is-the-source-and-why-should-we-listen-to-them&#34;&gt;Question 1: Who or what is the source, and why should we listen to them?&lt;/h4&gt;
+&lt;p&gt;When it comes to objective and scientific claims, I think there are two main things to pay attention to: Evidence and expertise. If you can&amp;rsquo;t identify at least one of these things, there is no reason to believe the source. It doesn&amp;rsquo;t matter if something &amp;ldquo;just makes sense&amp;rdquo; or if someone&amp;rsquo;s &amp;ldquo;gut feeling&amp;rdquo; leans a certain way. That&amp;rsquo;s valid for subjective matters, but not for assessing scientific results.&lt;/p&gt;
+&lt;p&gt;So from the get-go, ask yourself: Is there evidence being cited, or does this person have expertise?&lt;/p&gt;
+&lt;h4 id=&#34;question-2-are-they-providing-evidence&#34;&gt;Question 2: Are they providing evidence?&lt;/h4&gt;
+&lt;p&gt;There is a saying among statisticians: &amp;ldquo;In God we trust, all others bring data.&amp;rdquo;
+Evidence reigns supreme. In general, I&amp;rsquo;d rank the &amp;ldquo;reliability&amp;rdquo; of claims as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Expert who is citing evidence: Very high.&lt;/li&gt;
+&lt;li&gt;Expert speaking about their field, but not citing evidence: High, but with reservations. Even experts can be mistaken, or have lost their credibility as did the former scientist featured in &amp;ldquo;Plandemic.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Non-expert citing evidence: Good, but with reservations.&lt;/li&gt;
+&lt;li&gt;Non-expert without evidence: Low, no reason to give them the time of day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reason I&amp;rsquo;d put a non-expert with evidence as &amp;ldquo;Good, but with reservations&amp;rdquo; is because evidence does not necessarily speak for itself.
+Someone without expertise does not necessarily know what is important to consider. They may point to one set of data, but be missing a critical concept, or not realize that the data are unreliable for one reason or another.
+Someone with appropriate expertise is in a better position to know what is important to consider, and to interpret the available evidence.&lt;/p&gt;
+&lt;p&gt;Another saying - called Hitchens&amp;rsquo;s razor - is relevant here: &amp;ldquo;What can be asserted without evidence can also be dismissed without evidence.&amp;rdquo;&lt;/p&gt;
+&lt;h4 id=&#34;question-3-what-is-their-expertise&#34;&gt;Question 3: What is their expertise?&lt;/h4&gt;
+&lt;p&gt;Now, just because someone has expertise doesn&amp;rsquo;t mean they are automatically a reliable source. The field of expertise also matters. I myself am a statistician, I can speak to statistical matters. Statistics is somewhat unique in that it is the &lt;a href=&#34;https://heinonline.org/HOL/LandingPage?handle=hein.journals/kjpp9&amp;amp;div=20&amp;amp;id=&amp;amp;page=&#34;&gt;language of science&lt;/a&gt;, permeating the scientific endeavor: Researchers need to communicate their results, and that communication typically involves statistical experimentation and analysis. As John Tukey put it, statisticians &amp;ldquo;get to play in everyone&amp;rsquo;s backyard&amp;rdquo;, meaning we get exposed to and pick up a bit of various topics. We might not be experts in the field, but we can usually understand and assess the results.&lt;/p&gt;
+&lt;p&gt;But you shouldn&amp;rsquo;t ask me to describe why or how a given protein does what it does. You shouldn&amp;rsquo;t ask me to describe the mechanism by which a medication functions. Or why some molecule will or will not react with another, or how the gravity of the sun and planets interact with each other in the solar system. Similarly, you should not ask me to run electrical wiring for a house or repair a car engine.&lt;/p&gt;
+&lt;p&gt;My point here is that specialty matters. Nobody is an expert in all things. Some fields are closely related, so an expert in one may be highly competent in another, but many fields are exceedingly diverse. So it&amp;rsquo;s important to keep someone&amp;rsquo;s specialty in mind when listening to what they have to say.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve seen a number of times people quote medical doctors when talking about COVID-19. That&amp;rsquo;s perfectly fine, &lt;em&gt;when the topic is about clinical matters&lt;/em&gt;. Just as being a statistician doesn&amp;rsquo;t make me an expert in medicine, having an MD doesn&amp;rsquo;t make one an expert in statistics or epidemiology. Just because a topic is related to the medical field does not make medical doctors the foremost experts.&lt;/p&gt;
+&lt;p&gt;One job that I&amp;rsquo;ve held has been as a professor in a biostatistics department. I&amp;rsquo;ve collaborated with MDs and residents, and I&amp;rsquo;ve taught aspiring doctors.
+Some of the doctors had a solid grasp of statistical methods. Most did not. Fewer still should conduct their own statistical analysis.
+The students aiming for med school often took one or two courses in statistics, not enough to offer a comprehensive understanding statistics, much less the ability to properly conduct statistical analysis. Some were diligent students that probably retained the ideas of the course past the end of the semester. But most were (due to the competitiveness of med school applications) were hyper-focused on &lt;em&gt;grades&lt;/em&gt; rather than &lt;em&gt;understanding&lt;/em&gt;, and likely retained little if anything that we talked about after the final exam.&lt;/p&gt;
+&lt;p&gt;To be sure, there are some MDs who are excellent researchers, Dr. Anthony Fauci is a prime example. But when talking about a statistical or epidemiological analysis an MD is not automatically an expert, they are likely talking outside of their domain of expertise.&lt;/p&gt;
+&lt;h4 id=&#34;question-4-are-the-claims-extravagant&#34;&gt;Question 4: Are the claims extravagant?&lt;/h4&gt;
+&lt;p&gt;As Carl Sagan said, &amp;ldquo;Extraordinary claims require extraordinary evidence.&amp;rdquo;
+There are sometimes dramatic breakthroughs, but usually results are much more mundane or incremental in nature.
+If you see a headline or claim that seems too good to be true, it&amp;rsquo;s probably either misleading clickbait, misinformation, or conspiracy.&lt;/p&gt;
+&lt;h4 id=&#34;question-5-does-the-source-have-a-known-bias&#34;&gt;Question 5: Does the source have a known bias?&lt;/h4&gt;
+&lt;p&gt;Biased sources are likely to selectively interpret results, and either overlook or deliberately obscure flaws. That&amp;rsquo;s why a lot of research has a statement about funding sources. Remember those doctors from Bakersfield, California? They run a private urgent care facilities. They had an enormous conflict of interest: Personal profit.
+If they did not have that incredible bias, they may have been more reserved about their comments, and perhaps noticed the dramatic statistical and scientific errors they were making, and for which they were &lt;a href=&#34;https://www.acep.org/corona/covid-19-alert/covid-19-articles/acep-aaem-joint-statement-on-physician-misinformation/&#34;&gt;condemned&lt;/a&gt; by two major medical associations, the American College of Emergency Physicians and the American Academy of Emergency Medicine.&lt;/p&gt;
+&lt;p&gt;A financial bias is not the only bias out there. Various news outlets have a strong bias, and will omit certain facts, or selectively choose stories that spin a particular narrative. If a source is known to have a strong bias (be it right or left), then caution should be exercised in assessing the claims being made. This goes doubly so when the source itself acknowledges that it is biased, which ties back to the first question: Who is the source and why should we believe them? If the source admits they are biased, we should be skeptical of anything they have to say.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
