@@ -18,43 +18,83 @@
   </url>
   
   <url>
-    <loc>/post-other/a-scientific-smell-test/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/coronavirus/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/tags/child-document/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/covid/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/tags/loop/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/evidence/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/post-stats/looping-powerpoint-slides-in-rmarkdown/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/post-other/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/tags/powerpoint/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/science/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <loc>/tags/rmarkdown/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/rmarkdown/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/slides/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-stats/</loc>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-07-24T16:18:04-06:00</lastmod>
+    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-07-15T12:52:55-06:00</lastmod>
+    <loc>/post-other/a-scientific-smell-test/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/coronavirus/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/covid/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evidence/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-other/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/science/</loc>
+    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
   </url>
   
   <url>
@@ -418,10 +458,6 @@
   
   <url>
     <loc>/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>/post-stats/</loc>
   </url>
   
 </urlset>

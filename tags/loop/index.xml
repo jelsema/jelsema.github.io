@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Statistics Posts | Organized Chaos</title>
-    <link>/post-stats/</link>
-      <atom:link href="/post-stats/index.xml" rel="self" type="application/rss+xml" />
-    <description>Statistics Posts</description>
+    <title>loop | Organized Chaos</title>
+    <link>/tags/loop/</link>
+      <atom:link href="/tags/loop/index.xml" rel="self" type="application/rss+xml" />
+    <description>loop</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
-      <title>Statistics Posts</title>
-      <link>/post-stats/</link>
+      <title>loop</title>
+      <link>/tags/loop/</link>
     </image>
     
     <item>
