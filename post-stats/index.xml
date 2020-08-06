@@ -17,7 +17,7 @@
       <link>/post-stats/looping-powerpoint-slides-in-rmarkdown/</link>
       <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
       <guid>/post-stats/looping-powerpoint-slides-in-rmarkdown/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;img/looping-pp-slides.png&#34; alt=&#34;title-image&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;../../img/looping-pp-slides.png&#34; alt=&#34;title-image&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
 &lt;p&gt;For this post, I&amp;rsquo;m going to assume you are fairly familiar with RMarkdown. If not, you may want to start with
 &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/&#34;&gt;RMarkdown: The Definitive Guide&lt;/a&gt;, or
