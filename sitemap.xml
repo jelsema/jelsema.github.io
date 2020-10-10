@@ -19,7 +19,27 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/general/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/lecture/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-stats/one-or-two-tailed-tests/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-stats/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
   </url>
   
   <url>
@@ -58,11 +78,6 @@
   </url>
   
   <url>
-    <loc>/post-stats/</loc>
-    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/</loc>
     <lastmod>2020-08-01T12:50:30-06:00</lastmod>
   </url>
@@ -95,11 +110,6 @@
   <url>
     <loc>/tags/science/</loc>
     <lastmod>2020-07-31T16:18:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/general/</loc>
-    <lastmod>2020-07-15T12:52:55-06:00</lastmod>
   </url>
   
   <url>
@@ -184,11 +194,6 @@
   
   <url>
     <loc>/tags/intro/</loc>
-    <lastmod>2019-08-14T11:01:25-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/lecture/</loc>
     <lastmod>2019-08-14T11:01:25-04:00</lastmod>
   </url>
   
