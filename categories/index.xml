@@ -5,12 +5,28 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Categories</title>
       <link>/categories/</link>
     </image>
+    
+    <item>
+      <title>elections</title>
+      <link>/categories/elections/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/elections/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>voting</title>
+      <link>/categories/voting/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/voting/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>general</title>
@@ -25,6 +41,14 @@
       <link>/categories/lecture/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       <guid>/categories/lecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stat101</title>
+      <link>/categories/stat101/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/stat101/</guid>
       <description></description>
     </item>
     

@@ -28,10 +28,8 @@
   
     
   
-  <meta name="description" content="For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:
-The short answer is: Never use one tailed tests.- The Analysis Factor
-or
-Two-Tailed Tests are the Default Choice- Statistics by Jim">
+  <meta name="description" content="IntroductionShould you use a two-tailed test or a one-tailed test (or similarly, a confidence interval or 1-sided confidence bound)? For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:
+The short answer is: Never use one tailed tests.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post-stats/one-or-two-tailed-tests/">
@@ -117,10 +115,8 @@
   <meta property="og:site_name" content="Organized Chaos">
   <meta property="og:url" content="/post-stats/one-or-two-tailed-tests/">
   <meta property="og:title" content="One or two tails? | Organized Chaos">
-  <meta property="og:description" content="For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:
-The short answer is: Never use one tailed tests.- The Analysis Factor
-or
-Two-Tailed Tests are the Default Choice- Statistics by Jim"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="IntroductionShould you use a two-tailed test or a one-tailed test (or similarly, a confidence interval or 1-sided confidence bound)? For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:
+The short answer is: Never use one tailed tests."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
@@ -464,7 +460,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/lecture/">lecture</a>, <a href="/categories/general/">general</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/categories/lecture/">lecture</a>, <a href="/categories/general/">general</a>, <a href="/categories/stat101/">stat101</a></span>
   
 
   
@@ -584,7 +580,9 @@
       
 
 
-<p>For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Should you use a two-tailed test or a one-tailed test (or similarly, a confidence interval or 1-sided confidence bound)? For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:</p>
 <blockquote>
 <p>The short answer is: Never use one tailed tests.
 - <a href="https://www.theanalysisfactor.com/one-tailed-and-two-tailed-tests/">The Analysis Factor</a></p>
@@ -600,6 +598,7 @@
 - <a href="https://blog.analytics-toolkit.com/2017/one-tailed-two-tailed-tests-significance-ab-testing/">Analytics Toolkit blog</a></p>
 </blockquote>
 <p>I disagree with all of these statements to varying degrees, though mostly the first and the third. In this post, I’ll try to clarify how to think about this so that you can know whether to use a 1-sided or 2-sided test (spoiler: It has <del>nothing</del> little to do with Statistics). As an aside, “1-tailed” and “2-sided” are interchangable terms, and for the 1-tailed methods, there can be upper-tail or lower-tail.</p>
+</div>
 <div id="crash-course-on-hypothesis-testing" class="section level2">
 <h2>Crash course on hypothesis testing</h2>
 <p>Understanding 1- or 2-tailed methods is probably easiest to describe in terms of hypothesis testing, but the same concepts apply to interval estimation (instead of, e.g., a confidence interval, you can construct a 1-sided confidence bound). So to start off, I’ll give a very short summary of basic hypothesis testing. I’m going to focus on a 1-sample t-test, but the same ideas will apply to any situation where you can have two tails. If you already understand t-tests, you probably want to skip to the next section.</p>
@@ -662,6 +661,16 @@ Since this component was carefully designed and manufactured, the plan is to use
 
 
     
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/stat101/">stat101</a>
+  
+  <a class="badge badge-light" href="/tags/hypothesis-testing/">hypothesis testing</a>
+  
+  <a class="badge badge-light" href="/tags/tails/">tails</a>
+  
+</div>
 
 
 
@@ -897,6 +906,16 @@ Since this component was carefully designed and manufactured, the plan is to use
   
   <div class="container">
     <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+        
+  </p>
   
 
   <p class="powered-by">

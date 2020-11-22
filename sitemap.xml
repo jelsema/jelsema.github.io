@@ -19,11 +19,61 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/elections/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/elections/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-other/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/voting/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/voting/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-other/voting-methods-part-1-fptp/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-other/voting-methods-part-2-rcv/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-other/voting-methods-part-3-changes/</loc>
+    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/general/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/hypothesis-testing/</loc>
     <lastmod>2020-10-10T11:42:12-06:00</lastmod>
   </url>
   
@@ -38,12 +88,22 @@
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/tags/stat101/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/stat101/</loc>
     <lastmod>2020-10-10T11:42:12-06:00</lastmod>
   </url>
   
   <url>
     <loc>/post-stats/</loc>
+    <lastmod>2020-10-10T11:42:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tails/</loc>
     <lastmod>2020-10-10T11:42:12-06:00</lastmod>
   </url>
   
@@ -83,11 +143,6 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-08-01T12:50:30-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post-other/a-scientific-smell-test/</loc>
     <lastmod>2020-07-31T16:18:04-06:00</lastmod>
   </url>
@@ -104,11 +159,6 @@
   
   <url>
     <loc>/tags/evidence/</loc>
-    <lastmod>2020-07-31T16:18:04-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post-other/</loc>
     <lastmod>2020-07-31T16:18:04-06:00</lastmod>
   </url>
   
@@ -255,6 +305,21 @@
   <url>
     <loc>/publication/2019-threshold-knots/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/privacy/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/terms/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
