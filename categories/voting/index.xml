@@ -65,7 +65,7 @@ Everyone votes for a single candidate, and to determine the winner we just look 
 &lt;/div&gt;
 &lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;So, voting systems that can be gerrymandered have this big flaw. We’d prefer a system that is immune to gerrymandering. You can continue reading my take on some alternative methods in &lt;a href=&#34;https://jelsema.github.io/posts-other/2020-11-21-voting-methods-part-2-rcv&#34;&gt;Voting Methods Part 2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, voting systems that can be gerrymandered have this big flaw. We’d prefer a system that is immune to gerrymandering. You can continue reading my take on some alternative methods in &lt;a href=&#34;https://jelsema.github.io/posts-other/voting-methods-part-2-rcv&#34;&gt;Voting Methods Part 2&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -87,7 +87,7 @@ Everyone votes for a single candidate, and to determine the winner we just look 
 &lt;/div&gt;
 &lt;div id=&#34;alternative-voting-systems&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Alternative voting systems&lt;/h2&gt;
-&lt;p&gt;In &lt;a href=&#34;https://jelsema.github.io/posts-other/2020-11-21-voting-methods-part-1-fptp&#34;&gt;Voting Methods Part 1&lt;/a&gt; I talked about FPTP / plurality and some problems such as gerrymandering that can arise. So if we don’t like a system like that, what are some alternative methods that might address these problems?&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;voting-methods-part-1-fptp/&#34;&gt;Voting Methods Part 1&lt;/a&gt; I talked about FPTP / plurality and some problems such as gerrymandering that can arise. So if we don’t like a system like that, what are some alternative methods that might address these problems?&lt;/p&gt;
 &lt;div id=&#34;ranked-choice-voting&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Ranked choice voting&lt;/h3&gt;
 &lt;p&gt;Currently, most Americans vote by selecting one candidate from a set as “&lt;em&gt;The person they vote for.&lt;/em&gt;” But that’s not the only way to go about it. Back to the example with Calvin, Hobbes, and Suzie, every Suzie voter preferred Hobbes over Calvin. We could then say that their &lt;em&gt;preference&lt;/em&gt; order was: Suzie -&amp;gt; Hobbes -&amp;gt; Calvin. So they could fill out their ballot by &lt;em&gt;ranking&lt;/em&gt; these candidates, e.g.&lt;/p&gt;
@@ -152,7 +152,7 @@ Applying the same to all of the candidates, we would get the following results:&
 &lt;/div&gt;
 &lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;In &lt;a href=&#34;https://www.cgpgrey.com/politics-in-the-animal-kingdom&#34;&gt;Voting Methods Part 1&lt;/a&gt; I described plurality voting and some problems with it. Here in Part 2 I’ve talked a bit about some alternatives. These were both “background” for what I actually wanted to talk about in &lt;a href=&#34;https://www.cgpgrey.com/politics-in-the-animal-kingdom&#34;&gt;Voting Methods Part 3&lt;/a&gt;, some changes to the electoral process in the United States that I’d like to see.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;voting-methods-part-1-fptp/&#34;&gt;Voting Methods Part 1&lt;/a&gt; I described plurality voting and some problems with it. Here in Part 2 I’ve talked a bit about some alternatives. These were both “background” for what I actually wanted to talk about in &lt;a href=&#34;voting-methods-part-3-changes/&#34;&gt;Voting Methods Part 3&lt;/a&gt;, some changes to the electoral process in the United States that I’d like to see.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
