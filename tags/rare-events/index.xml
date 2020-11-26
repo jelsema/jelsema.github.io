@@ -38,10 +38,6 @@
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_chunk$set( echo = FALSE, message=FALSE )
-
-
-library(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;One of my goals with these posts is to explain some basic statistical concepts.&lt;/li&gt;
@@ -115,7 +111,7 @@ V\left[ \hat{p} \right] &amp;amp;= \dfrac{np(1-p)}{n^2} \\
 z = \dfrac{\hat{\theta} - \theta}{se(\hat{\theta})}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\hat{theta}\)&lt;/span&gt; is the MLE. Since we have the MLE and its standard error, the Wald statistic is:&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\hat{\theta}\)&lt;/span&gt; is the MLE. Since we have the MLE and its standard error, the Wald statistic is:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
@@ -127,7 +123,7 @@ z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
 &lt;h3&gt;Why the common approach is bad&lt;/h3&gt;
 &lt;p&gt;So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the &lt;em&gt;coverage probability&lt;/em&gt; of the confidence interval. If we consider the coverage probability across a range of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; values, we’ll see that it often drops below the nominal value. The figure below shows the coverage probability for each &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (in the interval &lt;span class=&#34;math inline&#34;&gt;\([0.02,0.98]\)&lt;/span&gt;) at a selection of sample sizes.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;This is a similar pattern as shown in several figures from &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt;, for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; for a selection of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This is a similar pattern as shown in several figures from &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt; (which I’ll abbreviate BCD), for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; for a selection of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here, the bottom-right figure is the same as their Figure 1. In both figures we see a very disturbing pattern: The coverage probability is usually below the nominal value, sometimes substantially so. Even at &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(n=200\)&lt;/span&gt;, the coverage probability rarely gets up to the nominal value for any &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. This is discussed in more detail in Brown, Cai, &amp;amp; DasGupta (2001), as well as several responses to their paper (which are included in the publication I linked above).&lt;/p&gt;
 &lt;p&gt;An in addition to that, they are very jittery. Ideally we’d like to think that the coverage probability is a smooth function, but that’s not the case here. It’s a result of the underlying discreteness of of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, and there are “lucky” and “unlucky” combinations of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
@@ -156,14 +152,14 @@ If we think of this as a function of $\hat{p}$, it&#39;s basically of the form $
 &lt;p&gt;Now that we’re all convinced that the standard approach has some deficiencies, what are some alternatives? I’m going to talk about three, though two are very similar. For each I’ll try to provide a more intuitive overview, and then as before, dig into a bit of the math.&lt;/p&gt;
 &lt;div id=&#34;alternative-1-wilson-and-agresi-coull-intervals&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Alternative 1: Wilson and Agresi-Coull intervals&lt;/h3&gt;
-&lt;p&gt;There are two (very similar) intervals I’ll mention. &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt; (which I’ll abbreviate BCD) call them the &lt;em&gt;Wilson&lt;/em&gt; interval, and the &lt;em&gt;Agresti-Coull&lt;/em&gt; interval. The idea is to use a slightly modified estimator in place of &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;There are two (very similar) intervals I’ll mention. BCD call them the &lt;em&gt;Wilson&lt;/em&gt; interval, and the &lt;em&gt;Agresti-Coull&lt;/em&gt; interval. The idea is to use a slightly modified estimator in place of &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \tilde{p} = \dfrac{X + \dfrac{\kappa^{2}}{2}}{n + \kappa^{2} }
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;In this, in part to reduce notation, I’ve used &lt;span class=&#34;math inline&#34;&gt;\(\kappa = Z_{\alpha/2}\)&lt;/span&gt;, which is what BCD did.&lt;/p&gt;
-&lt;p&gt;This may look weird, but it’s actually not that strange. Notice that the general form &lt;span class=&#34;math inline&#34;&gt;\(X/n\)&lt;/span&gt; is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then &lt;span class=&#34;math inline&#34;&gt;\(Z^{2}_{\alpha/2} = 1.96\)&lt;/span&gt;, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
+&lt;p&gt;This may look weird, but it’s actually not that strange. Notice that the general form &lt;span class=&#34;math inline&#34;&gt;\(X/n\)&lt;/span&gt; is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then &lt;span class=&#34;math inline&#34;&gt;\(\kappa = 1.96\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\kappa^{2} = 3.84\)&lt;/span&gt;, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
 &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.1998.10480550&#34;&gt;Agresti &amp;amp; Coull (1998)&lt;/a&gt;,
-alternatively on &lt;a href=&#34;https://www.jstor.org/stable/2685469&#34;&gt;JSTOR&lt;/a&gt;). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.&lt;/p&gt;
+alternative link on &lt;a href=&#34;https://www.jstor.org/stable/2685469&#34;&gt;JSTOR&lt;/a&gt;). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.&lt;/p&gt;
 &lt;p&gt;Both the Wilson and Agresi-Coull approach use this as the point estimate, but the standard errors they use are slightly different.&lt;/p&gt;
 &lt;p&gt;The Wilson confidence interval uses:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -205,7 +201,7 @@ p &amp;amp;= \dfrac{2\hat{p} + t \pm \sqrt{  (2\hat{p}+t)^{2} - 4(1+t)\hat{p}^{2
   &amp;amp;= \dfrac{\hat{p} + \dfrac{t}{2} \pm \sqrt{ t\hat{p}(1-\hat{p}) + \dfrac{t^{2}}{4} }}{1+t}
 \end{align}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and substitute that back in. I’m going to separate the fraction at the &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt;, and pull a &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt; out from the denominator - thus multiplying the numerator by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; - to cancel these hideous fractions-within-fractions.&lt;/p&gt;
+&lt;p&gt;I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and substitute that back in. I’m going to separate the fraction at the &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt;, and pull a &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt; out from the denominator - thus multiplying the numerator by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; - to cancel some of these hideous fractions-within-fractions.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 p  &amp;amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{n}\hat{p}(1-\hat{p}) + \kappa^{2}\dfrac{\kappa^{2}}{4n^{2}} }}{1+\kappa^{2}/n} \\
@@ -222,7 +218,6 @@ p  &amp;amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \mbox{Estimate} \pm \mbox{Critical Value}\times\mbox{Std Error}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The last thing to note is that &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = \hat{p}\)&lt;/span&gt;. Remember that Wilson’s formulation started out with the sampling distribution of the sample proportion, so that’s all &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt; is here (a fact which we used in the derivation above, turning &lt;span class=&#34;math inline&#34;&gt;\(p_{0}\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(x_{0}\)&lt;/span&gt; by multiplying by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;).&lt;/p&gt;
 &lt;p&gt;Agresi and Coull wanted to simplify this a bit, so they used the same estimator, defining:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
@@ -257,9 +252,9 @@ p     &amp;amp;\sim \mbox{Beta}(\alpha, \beta)
 &lt;p&gt;With this posterior distribution, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;, and observed &lt;span class=&#34;math inline&#34;&gt;\(x=1\)&lt;/span&gt; occurrences of the event of interest. Then taking &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \beta = 1\)&lt;/span&gt; (the uniform prior on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;), our posterior would look like below. Note that the x-axis is fairly truncated!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The Wilson estimate, for reference, would be:&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt; =  =  = 0.0542&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\tilde{p} = \dfrac{1 + 1.96^2/2}{50 + 1.96^2} = \dfrac{2.921}{53.84} = 0.0542
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;comparisons&#34; class=&#34;section level2&#34;&gt;

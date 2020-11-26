@@ -28,7 +28,8 @@
   
     
   
-  <meta name="description" content="IntroductionThe common approachCommon Approach: The mathWhy the common approach is badAlternativesAlternative 1: Wilson and Agresi-Coull intervalsWilson interval: The mathAlternative 2: Bayesian methodComparisonsSummaryIntroductionknitr::opts_chunk$set( echo = FALSE, message=FALSE )library(&quot;tidyverse&quot;)Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:">
+  <meta name="description" content="IntroductionThe common approachCommon Approach: The mathWhy the common approach is badAlternativesAlternative 1: Wilson and Agresi-Coull intervalsWilson interval: The mathAlternative 2: Bayesian methodComparisonsSummaryIntroductionEstimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:
+One of my goals with these posts is to explain some basic statistical concepts.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post-stats/estimating-binomial-proportions/">
@@ -114,7 +115,8 @@
   <meta property="og:site_name" content="Organized Chaos">
   <meta property="og:url" content="/post-stats/estimating-binomial-proportions/">
   <meta property="og:title" content="Estimating binomial proportions for rare events | Organized Chaos">
-  <meta property="og:description" content="IntroductionThe common approachCommon Approach: The mathWhy the common approach is badAlternativesAlternative 1: Wilson and Agresi-Coull intervalsWilson interval: The mathAlternative 2: Bayesian methodComparisonsSummaryIntroductionknitr::opts_chunk$set( echo = FALSE, message=FALSE )library(&quot;tidyverse&quot;)Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="IntroductionThe common approachCommon Approach: The mathWhy the common approach is badAlternativesAlternative 1: Wilson and Agresi-Coull intervalsWilson interval: The mathAlternative 2: Bayesian methodComparisonsSummaryIntroductionEstimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:
+One of my goals with these posts is to explain some basic statistical concepts."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
@@ -596,10 +598,6 @@
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<pre class="r"><code>knitr::opts_chunk$set( echo = FALSE, message=FALSE )
-
-
-library(&quot;tidyverse&quot;)</code></pre>
 <p>Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:</p>
 <ol style="list-style-type: decimal">
 <li>One of my goals with these posts is to explain some basic statistical concepts.</li>
@@ -673,7 +671,7 @@ V\left[ \hat{p} \right] &amp;= \dfrac{np(1-p)}{n^2} \\
 z = \dfrac{\hat{\theta} - \theta}{se(\hat{\theta})}
 \end{aligned}
 \]</span></p>
-<p>where <span class="math inline">\(\hat{theta}\)</span> is the MLE. Since we have the MLE and its standard error, the Wald statistic is:</p>
+<p>where <span class="math inline">\(\hat{\theta}\)</span> is the MLE. Since we have the MLE and its standard error, the Wald statistic is:</p>
 <p><span class="math display">\[
 \begin{aligned}
 z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
@@ -685,7 +683,7 @@ z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
 <h3>Why the common approach is bad</h3>
 <p>So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the <em>coverage probability</em> of the confidence interval. If we consider the coverage probability across a range of <span class="math inline">\(p\)</span> values, we’ll see that it often drops below the nominal value. The figure below shows the coverage probability for each <span class="math inline">\(p\)</span> (in the interval <span class="math inline">\([0.02,0.98]\)</span>) at a selection of sample sizes.</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>This is a similar pattern as shown in several figures from <a href="https://projecteuclid.org/euclid.ss/1009213286">Brown, Cai, &amp; DasGupta (2001)</a>, for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of <span class="math inline">\(n\)</span> for a selection of <span class="math inline">\(p\)</span>.</p>
+<p>This is a similar pattern as shown in several figures from <a href="https://projecteuclid.org/euclid.ss/1009213286">Brown, Cai, &amp; DasGupta (2001)</a> (which I’ll abbreviate BCD), for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of <span class="math inline">\(n\)</span> for a selection of <span class="math inline">\(p\)</span>.</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Here, the bottom-right figure is the same as their Figure 1. In both figures we see a very disturbing pattern: The coverage probability is usually below the nominal value, sometimes substantially so. Even at <span class="math inline">\(n=100\)</span> or <span class="math inline">\(n=200\)</span>, the coverage probability rarely gets up to the nominal value for any <span class="math inline">\(p\)</span>. This is discussed in more detail in Brown, Cai, &amp; DasGupta (2001), as well as several responses to their paper (which are included in the publication I linked above).</p>
 <p>An in addition to that, they are very jittery. Ideally we’d like to think that the coverage probability is a smooth function, but that’s not the case here. It’s a result of the underlying discreteness of of <span class="math inline">\(X\)</span>, and there are “lucky” and “unlucky” combinations of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>.</p>
@@ -714,14 +712,14 @@ If we think of this as a function of $\hat{p}$, it's basically of the form $y = 
 <p>Now that we’re all convinced that the standard approach has some deficiencies, what are some alternatives? I’m going to talk about three, though two are very similar. For each I’ll try to provide a more intuitive overview, and then as before, dig into a bit of the math.</p>
 <div id="alternative-1-wilson-and-agresi-coull-intervals" class="section level3">
 <h3>Alternative 1: Wilson and Agresi-Coull intervals</h3>
-<p>There are two (very similar) intervals I’ll mention. <a href="https://projecteuclid.org/euclid.ss/1009213286">Brown, Cai, &amp; DasGupta (2001)</a> (which I’ll abbreviate BCD) call them the <em>Wilson</em> interval, and the <em>Agresti-Coull</em> interval. The idea is to use a slightly modified estimator in place of <span class="math inline">\(\hat{p}\)</span>:</p>
+<p>There are two (very similar) intervals I’ll mention. BCD call them the <em>Wilson</em> interval, and the <em>Agresti-Coull</em> interval. The idea is to use a slightly modified estimator in place of <span class="math inline">\(\hat{p}\)</span>:</p>
 <p><span class="math display">\[
 \tilde{p} = \dfrac{X + \dfrac{\kappa^{2}}{2}}{n + \kappa^{2} }
 \]</span></p>
 <p>In this, in part to reduce notation, I’ve used <span class="math inline">\(\kappa = Z_{\alpha/2}\)</span>, which is what BCD did.</p>
-<p>This may look weird, but it’s actually not that strange. Notice that the general form <span class="math inline">\(X/n\)</span> is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then <span class="math inline">\(Z^{2}_{\alpha/2} = 1.96\)</span>, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
+<p>This may look weird, but it’s actually not that strange. Notice that the general form <span class="math inline">\(X/n\)</span> is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then <span class="math inline">\(\kappa = 1.96\)</span> and <span class="math inline">\(\kappa^{2} = 3.84\)</span>, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
 <a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.1998.10480550">Agresti &amp; Coull (1998)</a>,
-alternatively on <a href="https://www.jstor.org/stable/2685469">JSTOR</a>). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.</p>
+alternative link on <a href="https://www.jstor.org/stable/2685469">JSTOR</a>). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.</p>
 <p>Both the Wilson and Agresi-Coull approach use this as the point estimate, but the standard errors they use are slightly different.</p>
 <p>The Wilson confidence interval uses:</p>
 <p><span class="math display">\[
@@ -763,7 +761,7 @@ p &amp;= \dfrac{2\hat{p} + t \pm \sqrt{  (2\hat{p}+t)^{2} - 4(1+t)\hat{p}^{2}  }
   &amp;= \dfrac{\hat{p} + \dfrac{t}{2} \pm \sqrt{ t\hat{p}(1-\hat{p}) + \dfrac{t^{2}}{4} }}{1+t}
 \end{align}
 \]</span></p>
-<p>I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that <span class="math inline">\(t = \kappa^{2}/n\)</span>, and substitute that back in. I’m going to separate the fraction at the <span class="math inline">\(\pm\)</span>, and pull a <span class="math inline">\(1/n\)</span> out from the denominator - thus multiplying the numerator by <span class="math inline">\(n\)</span> - to cancel these hideous fractions-within-fractions.</p>
+<p>I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that <span class="math inline">\(t = \kappa^{2}/n\)</span>, and substitute that back in. I’m going to separate the fraction at the <span class="math inline">\(\pm\)</span>, and pull a <span class="math inline">\(1/n\)</span> out from the denominator - thus multiplying the numerator by <span class="math inline">\(n\)</span> - to cancel some of these hideous fractions-within-fractions.</p>
 <p><span class="math display">\[
 \begin{align}
 p  &amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{n}\hat{p}(1-\hat{p}) + \kappa^{2}\dfrac{\kappa^{2}}{4n^{2}} }}{1+\kappa^{2}/n} \\
@@ -780,7 +778,6 @@ p  &amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{
 <p><span class="math display">\[
 \mbox{Estimate} \pm \mbox{Critical Value}\times\mbox{Std Error}
 \]</span></p>
-<p>The last thing to note is that <span class="math inline">\(\hat{p} = \hat{p}\)</span>. Remember that Wilson’s formulation started out with the sampling distribution of the sample proportion, so that’s all <span class="math inline">\(\hat{p}\)</span> is here (a fact which we used in the derivation above, turning <span class="math inline">\(p_{0}\)</span> into <span class="math inline">\(x_{0}\)</span> by multiplying by <span class="math inline">\(n\)</span>).</p>
 <p>Agresi and Coull wanted to simplify this a bit, so they used the same estimator, defining:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -815,9 +812,9 @@ p     &amp;\sim \mbox{Beta}(\alpha, \beta)
 <p>With this posterior distribution, we can estimate <span class="math inline">\(p\)</span> in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size <span class="math inline">\(n=50\)</span>, and observed <span class="math inline">\(x=1\)</span> occurrences of the event of interest. Then taking <span class="math inline">\(\alpha = \beta = 1\)</span> (the uniform prior on <span class="math inline">\(p\)</span>), our posterior would look like below. Note that the x-axis is fairly truncated!</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>The Wilson estimate, for reference, would be:</p>
-<p>$$</p>
-<p> =  =  = 0.0542</p>
-<p>$$</p>
+<p><span class="math display">\[
+\tilde{p} = \dfrac{1 + 1.96^2/2}{50 + 1.96^2} = \dfrac{2.921}{53.84} = 0.0542
+\]</span></p>
 </div>
 </div>
 <div id="comparisons" class="section level2">
