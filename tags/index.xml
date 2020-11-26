@@ -29,18 +29,34 @@
     </item>
     
     <item>
-      <title>hypothesis testing</title>
-      <link>/tags/hypothesis-testing/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/hypothesis-testing/</guid>
+      <title>binomial</title>
+      <link>/tags/binomial/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/binomial/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>stat101</title>
-      <link>/tags/stat101/</link>
+      <title>categorical</title>
+      <link>/tags/categorical/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/categorical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rare events</title>
+      <link>/tags/rare-events/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/rare-events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hypothesis testing</title>
+      <link>/tags/hypothesis-testing/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/stat101/</guid>
+      <guid>/tags/hypothesis-testing/</guid>
       <description></description>
     </item>
     
@@ -77,14 +93,6 @@
     </item>
     
     <item>
-      <title>rmarkdown</title>
-      <link>/tags/rmarkdown/</link>
-      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/rmarkdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>slides</title>
       <link>/tags/slides/</link>
       <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
@@ -113,14 +121,6 @@
       <link>/tags/evidence/</link>
       <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
       <guid>/tags/evidence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>science</title>
-      <link>/tags/science/</link>
-      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/science/</guid>
       <description></description>
     </item>
     

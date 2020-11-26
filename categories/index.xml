@@ -13,41 +13,33 @@
     </image>
     
     <item>
-      <title>elections</title>
-      <link>/categories/elections/</link>
+      <title>politics</title>
+      <link>/categories/politics/</link>
       <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/elections/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>voting</title>
-      <link>/categories/voting/</link>
-      <pubDate>Sat, 21 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/voting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>general</title>
-      <link>/categories/general/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/general/</guid>
+      <guid>/categories/politics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lecture</title>
       <link>/categories/lecture/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
       <guid>/categories/lecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>methods</title>
+      <link>/categories/methods/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/methods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>stat101</title>
       <link>/categories/stat101/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
       <guid>/categories/stat101/</guid>
       <description></description>
     </item>
@@ -61,10 +53,18 @@
     </item>
     
     <item>
-      <title>methods</title>
-      <link>/categories/methods/</link>
-      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/methods/</guid>
+      <title>science</title>
+      <link>/categories/science/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>general</title>
+      <link>/categories/general/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/general/</guid>
       <description></description>
     </item>
     

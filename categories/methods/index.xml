@@ -5,12 +5,363 @@
     <link>/categories/methods/</link>
       <atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
     <description>methods</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>methods</title>
       <link>/categories/methods/</link>
     </image>
+    
+    <item>
+      <title>Estimating binomial proportions for rare events</title>
+      <link>/post-stats/estimating-binomial-proportions/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post-stats/estimating-binomial-proportions/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-common-approach&#34;&gt;The common approach&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#common-approach-the-math&#34;&gt;Common Approach: The math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-the-common-approach-is-bad&#34;&gt;Why the common approach is bad&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alternatives&#34;&gt;Alternatives&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#alternative-1-wilson-and-agresi-coull-intervals&#34;&gt;Alternative 1: Wilson and Agresi-Coull intervals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wilson-interval-the-math&#34;&gt;Wilson interval: The math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alternative-2-bayesian-method&#34;&gt;Alternative 2: Bayesian method&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#comparisons&#34;&gt;Comparisons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_chunk$set( echo = FALSE, message=FALSE )
+
+
+library(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;One of my goals with these posts is to explain some basic statistical concepts.&lt;/li&gt;
+&lt;li&gt;The “standard” approach from many - possibly most - introductory books is &lt;em&gt;bad&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Especially when it is a “rare event” of interest, the standard method breaks down.&lt;/li&gt;
+&lt;li&gt;To motivate myself to do some of the math and write a simulation comparing the alternatives so that I better understand them.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For items 2 and 3, there are some modifications and alternatives which are not really that difficult or complicated, so I think they’re suitable for a general audience (though I can see why they’re less talked about in intro stats).&lt;/p&gt;
+&lt;p&gt;To introduce some notation, let’s consider a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; from an infinite population which has a proportion &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; of the outcome of interest, and in this sample we count &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; occurrences of the event of interest. For a couple of examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There is a stable manufacturing process creating some component, but a certain proportion of these components will exhibit a fatal flaw. We randomly sample 100 units and count the number with the flaw. This could be either presence/absence of some defect, or pass/fail inspection on a numeric measurement.&lt;/li&gt;
+&lt;li&gt;The CDC randomly selects a sample of 1000 individuals and counts how many of them test positive for a particular illness (influenza, COVID-19, etc).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post will be organized as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Talk about the common approach usually taught in intro stats.&lt;/li&gt;
+&lt;li&gt;Explain why that approach is not so great, for two reasons.&lt;/li&gt;
+&lt;li&gt;Introduce two alternative approaches.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-common-approach&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The common approach&lt;/h2&gt;
+&lt;p&gt;When an introductory statistics textbook talks about estimating a binomial proportion, they will typically say that we estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; using &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = x / n\)&lt;/span&gt;. This estimate has a sample standard error &lt;span class=&#34;math inline&#34;&gt;\(se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}\)&lt;/span&gt;. From this, we can construct a &lt;em&gt;Wald statistic&lt;/em&gt;, which is asymptotically Normal, then we can use the asymptotic normality of Wald statistics to say that:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\dfrac{\hat{p}-p}{\sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}} \sim N( 0, 1)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If we use this to set up a 2-tailed test, we can then unpack it (or “invert” the test) to obtain a confidence interval:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{p} \pm Z_{\alpha/2} \sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This is the confidence interval that is often (though not universally) taught in introductory statistics as the default.&lt;/p&gt;
+&lt;p&gt;As a side-note, it may be easier for beginners to “see” the asymptotic normality arising as a consequence of the normal approximation to the binomial distribution. If &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mbox{Bin}(n,p)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(X \stackrel{\text{aprx}}{\sim} N( np, np(1-p) )\)&lt;/span&gt; under &lt;a href=&#34;https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation&#34;&gt;certain conditions&lt;/a&gt; that are not consistent from source to source. There are &lt;a href=&#34;https://math.stackexchange.com/questions/578935/how-to-prove-that-the-binomial-distribution-is-approximately-close-to-the-normal&#34;&gt;different ways&lt;/a&gt; to go about establishing this, one of which is via the Central Limit Theorem.&lt;/p&gt;
+&lt;div id=&#34;common-approach-the-math&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Common Approach: The math&lt;/h3&gt;
+&lt;p&gt;If you haven’t seen the math of deriving &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = x / n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}\)&lt;/span&gt; and would like to see, read on. If you know it already, or don’t have much calculus or probability theory background (maybe a calculus-based introductory statistics course), you may want to skip this subsection.&lt;/p&gt;
+&lt;p&gt;First we’ll derive &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt; using &lt;em&gt;maximum likelihood estimation&lt;/em&gt; (MLE, which is usually pronounced M-L-E, but one prof of mine pronounced “me-lee” which was always weird to me). To do this, we take the &lt;em&gt;likelihood&lt;/em&gt; of the data (in this case, a Binomial distribution), and find the value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; which maximizes it. Mathematically, this is just a calculus problem, and for the Binomial distribution is fairly straightforward.&lt;/p&gt;
+&lt;p&gt;The likelihood is the joint probability, but since we observe the data we think of the data as constant, and treat it as a function of the parameters of interest. In this case, the individual observations are Bernoulli (success/failure), and the joint probability is a Binomial distribution. Hence the likelihood is: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{L}(p|x) = \binom{n}{x}p^{x}(1-p)^{n-x}\)&lt;/span&gt;. The typical MLE approach is to take the derivative of the log-likelihood, since that won’t move the maximum, and generally makes solving easier.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L(p|X) &amp;amp;= \ln\mathcal{L}(p|X) = \ln \binom{n}{X} + X\ln(p) + (n-X)\ln(1-p) \\
+\dfrac{\partial}{\partial p}L(p|X) &amp;amp;= \dfrac{X}{p} - \dfrac{n-X}{1-p}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From there, we set the derivative to zero and solve for the parameter.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+0 &amp;amp;= \dfrac{x}{\hat{p}} - \dfrac{n-x}{1-\hat{p}} \\
+\dfrac{n-x}{1-\hat{p}} &amp;amp;= \dfrac{n}{\hat{p}} \\
+n\hat{p} - x\hat{p} &amp;amp;= x - x\hat{p} \\
+n\hat{p} &amp;amp;= x \\
+\hat{p} &amp;amp;= \dfrac{x}{n}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From there, we want the standard error of our MLE, which is just the square root of the variance.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+V\left[ \hat{p} \right] &amp;amp;= V\left[ \dfrac{X}{n} \right] \\
+&amp;amp;= \dfrac{1}{n^2} V\left[ X \right]
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then since &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; comes from a Binomial distribution, we know that &lt;span class=&#34;math inline&#34;&gt;\(V\left[ X \right] = np(1-p)\)&lt;/span&gt;, substituting that in results in:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+V\left[ \hat{p} \right] &amp;amp;= \dfrac{np(1-p)}{n^2} \\
+&amp;amp;= \dfrac{p(1-p)}{n}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Finally, a &lt;em&gt;Wald statistic&lt;/em&gt; is a statistic of the form:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+z = \dfrac{\hat{\theta} - \theta}{se(\hat{\theta})}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\hat{theta}\)&lt;/span&gt; is the MLE. Since we have the MLE and its standard error, the Wald statistic is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then, because Wald statistics are asymptotically Normal, we use this statistic to obtain the confidence interval we saw before.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-the-common-approach-is-bad&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why the common approach is bad&lt;/h3&gt;
+&lt;p&gt;So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the &lt;em&gt;coverage probability&lt;/em&gt; of the confidence interval. If we consider the coverage probability across a range of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; values, we’ll see that it often drops below the nominal value. The figure below shows the coverage probability for each &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (in the interval &lt;span class=&#34;math inline&#34;&gt;\([0.02,0.98]\)&lt;/span&gt;) at a selection of sample sizes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is a similar pattern as shown in several figures from &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt;, for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; for a selection of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here, the bottom-right figure is the same as their Figure 1. In both figures we see a very disturbing pattern: The coverage probability is usually below the nominal value, sometimes substantially so. Even at &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(n=200\)&lt;/span&gt;, the coverage probability rarely gets up to the nominal value for any &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. This is discussed in more detail in Brown, Cai, &amp;amp; DasGupta (2001), as well as several responses to their paper (which are included in the publication I linked above).&lt;/p&gt;
+&lt;p&gt;An in addition to that, they are very jittery. Ideally we’d like to think that the coverage probability is a smooth function, but that’s not the case here. It’s a result of the underlying discreteness of of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, and there are “lucky” and “unlucky” combinations of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aside:&lt;/strong&gt; These figures were not generated by simulation, they are exact coverage probabilities. It’s fairly straightforward to come up with the formula. For illustration, I’ll just pick a certain value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, say &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;.
+We need to know the probability that, when &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, the confidence interval we compute will actually contain the value &lt;span class=&#34;math inline&#34;&gt;\(0.20\)&lt;/span&gt;. But &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; isn’t what the confidence interval formula uses, right? Even if we know that &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, there are many possible values for &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;, which mean there are many possible values of the endpoints for the confidence interval. So to calculate the coverage probability, what we do (or what I did), was:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Set up a vector &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which contains the values &lt;span class=&#34;math inline&#34;&gt;\(0, 1, ..., n\)&lt;/span&gt;. This is the sequence of “successes”.&lt;/li&gt;
+&lt;li&gt;For each, compute &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = X/n\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;From &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;, compute the endpoints of the confidence interval.&lt;/li&gt;
+&lt;li&gt;For each confidence interval, determine whether the true value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; has been captured.&lt;/li&gt;
+&lt;li&gt;Identify the bounds of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which result in “successful” confidence intervals. That is, determine &lt;span class=&#34;math inline&#34;&gt;\(X_{max}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt;, the largest and smallest values of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which produce a confidence interval which captures &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. For example, when &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, if &lt;span class=&#34;math inline&#34;&gt;\(X=60\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt;, then the CI is &lt;span class=&#34;math inline&#34;&gt;\((0.504, 0.696)\)&lt;/span&gt;, which does not capture &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Compute the probability that &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is contained in the interval &lt;span class=&#34;math inline&#34;&gt;\([X_{min}, X_{min}]\)&lt;/span&gt;. Since we know &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, this is just a binomial probability: &lt;span class=&#34;math inline&#34;&gt;\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)&lt;/span&gt;. Note we subtract 1, because &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; is a valid value, so &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; needs to be strictly below &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; for the interval to fail.&lt;/li&gt;
+&lt;li&gt;Repeat steps 1-6 for a sequence of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; from some “small” value to some “large” value (as indicated, I chose &lt;span class=&#34;math inline&#34;&gt;\(0.02\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(0.98\)&lt;/span&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Developing this idea and creating the code to produce a plot like the above would probably be a good exercise for a low-level statistics course that includes a probability component.&lt;/p&gt;
+&lt;!----------
+
+One reason for the behavior at the tails is because of what happens to the standard error. Remember that we estimate the standard error of $\hat{p}$ with $se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}.$
+If we think of this as a function of $\hat{p}$, it&#39;s basically of the form $y = x(1-x)$ (with $x$ bounded between $0$ and $1$). This function gets maximized when $x=0.5$, and when $x$ is close to $0$ or $1$, the function approaches zero. This means that the standard error of $\hat{p}$ gets arbitrarily close to zero. This shrinks the confidence interval and makes it less likely that we&#39;re able to capture the true value of $p$.
+
+----------&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alternatives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alternatives&lt;/h2&gt;
+&lt;p&gt;Now that we’re all convinced that the standard approach has some deficiencies, what are some alternatives? I’m going to talk about three, though two are very similar. For each I’ll try to provide a more intuitive overview, and then as before, dig into a bit of the math.&lt;/p&gt;
+&lt;div id=&#34;alternative-1-wilson-and-agresi-coull-intervals&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Alternative 1: Wilson and Agresi-Coull intervals&lt;/h3&gt;
+&lt;p&gt;There are two (very similar) intervals I’ll mention. &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt; (which I’ll abbreviate BCD) call them the &lt;em&gt;Wilson&lt;/em&gt; interval, and the &lt;em&gt;Agresti-Coull&lt;/em&gt; interval. The idea is to use a slightly modified estimator in place of &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\tilde{p} = \dfrac{X + \dfrac{\kappa^{2}}{2}}{n + \kappa^{2} }
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In this, in part to reduce notation, I’ve used &lt;span class=&#34;math inline&#34;&gt;\(\kappa = Z_{\alpha/2}\)&lt;/span&gt;, which is what BCD did.&lt;/p&gt;
+&lt;p&gt;This may look weird, but it’s actually not that strange. Notice that the general form &lt;span class=&#34;math inline&#34;&gt;\(X/n\)&lt;/span&gt; is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then &lt;span class=&#34;math inline&#34;&gt;\(Z^{2}_{\alpha/2} = 1.96\)&lt;/span&gt;, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
+&lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.1998.10480550&#34;&gt;Agresti &amp;amp; Coull (1998)&lt;/a&gt;,
+alternatively on &lt;a href=&#34;https://www.jstor.org/stable/2685469&#34;&gt;JSTOR&lt;/a&gt;). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.&lt;/p&gt;
+&lt;p&gt;Both the Wilson and Agresi-Coull approach use this as the point estimate, but the standard errors they use are slightly different.&lt;/p&gt;
+&lt;p&gt;The Wilson confidence interval uses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+se(\tilde{p}) = \left(\dfrac{\sqrt{n}}{n + \kappa^{2}}\right)\sqrt{\hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The Agresi-Coull confidence interval uses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+se(\tilde{p}) = \sqrt{\dfrac{\tilde{p}(1-\tilde{p})}{\tilde{n}}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\tilde{n} = n+\kappa^{2}\)&lt;/span&gt;. With &lt;span class=&#34;math inline&#34;&gt;\(\tilde{n}\)&lt;/span&gt;, we could also define &lt;span class=&#34;math inline&#34;&gt;\(\tilde{X}=X+\kappa\)&lt;/span&gt; and write the point estimate as &lt;span class=&#34;math inline&#34;&gt;\(\tilde{p} = \tilde{X}/\tilde{n}\)&lt;/span&gt;. So the Agresi-Coull approach is really just the standard methods after having applied this adjustment of adding an equal number of successes and failures.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wilson-interval-the-math&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wilson interval: The math&lt;/h3&gt;
+&lt;p&gt;Alright, so how do we get these estimators and standard errors? BCD aren’t really focused on the derivation, so we need to go back to the source:
+&lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/01621459.1927.10502953&#34;&gt;Wilson (1927)&lt;/a&gt;
+(alternative: &lt;a href=&#34;https://www.jstor.org/stable/2276774&#34;&gt;JSTOR link&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Reading that, Wilson does something interesting. First, he considers the sampling distribution of the sample proportion.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In this, &lt;span class=&#34;math inline&#34;&gt;\(\sigma = \sqrt{p(1-p)/n}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; is some constant. He then points out that the probability of some value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; falling outside of the interval is &lt;span class=&#34;math inline&#34;&gt;\(p \pm \kappa\sigma\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(P( Z \geq \kappa)\)&lt;/span&gt;. The question is then how to extract &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; from this. What Wilson does is &lt;em&gt;square&lt;/em&gt; the distance between the true value &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and some sample proportion &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;. And since we know that this distance is (with a probability determined by &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt;), we can equate the two.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\left(\hat{p} - p\right)^{2} = \left(\kappa\sigma\right)^2 = \dfrac{\kappa^{2}p(1-p)}{n}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Small note: Wilson used &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, I’m using &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; because that’s what BCD used. Having set this up Wilson (probably to save notation) sets &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and points out that this is a quadratic expression in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, so we can use the quadratic formula to solve it. We first need to expand the square, get everything on one side, and collect like terms.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p^{2} - 2p\hat{p} + \hat{p}^{2} &amp;amp;= tp - tp^{2} \\ 
+0 &amp;amp;= p^{2}\left(1+t\right) - p\left(2\hat{p}+t\right) + \hat{p}^{2}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Applying the &lt;a href=&#34;https://en.wikipedia.org/wiki/Quadratic_formula&#34;&gt;quadratic formula&lt;/a&gt; with
+&lt;span class=&#34;math inline&#34;&gt;\(a=(1+t)\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(b=-(2\hat{p}+t)\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(c=\hat{p}^{2}\)&lt;/span&gt;
+we get the solution to be:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+p &amp;amp;= \dfrac{2\hat{p} + t \pm \sqrt{  (2\hat{p}+t)^{2} - 4(1+t)\hat{p}^{2}  }}{2(1+t)} \\
+  &amp;amp; \\
+  &amp;amp; \mbox{(some algebra)} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{\hat{p} + \dfrac{t}{2} \pm \sqrt{ t\hat{p}(1-\hat{p}) + \dfrac{t^{2}}{4} }}{1+t}
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and substitute that back in. I’m going to separate the fraction at the &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt;, and pull a &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt; out from the denominator - thus multiplying the numerator by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; - to cancel these hideous fractions-within-fractions.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+p  &amp;amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{n}\hat{p}(1-\hat{p}) + \kappa^{2}\dfrac{\kappa^{2}}{4n^{2}} }}{1+\kappa^{2}/n} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \dfrac{\sqrt{ \kappa^{2}n \hat{p}(1-\hat{p}) + \kappa^{2}n\dfrac{\kappa^{2}}{4n} }}{n+\kappa^{2}} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \dfrac{ \kappa\sqrt{n} \sqrt{ \hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n} }}{n+\kappa^{2}} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \kappa \dfrac{ \sqrt{n}}{n+\kappa^{2}} \sqrt{ \hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n} } 
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note that on line 2, I also multiplied the last term under the radical by &lt;span class=&#34;math inline&#34;&gt;\(n/n = 1\)&lt;/span&gt;. This was to make it “match” the first term in having &lt;span class=&#34;math inline&#34;&gt;\(\kappa^{2}n\)&lt;/span&gt; that could be extracted from the radical. with this, we’ve arrived at the form of the interval I presented originally.&lt;/p&gt;
+&lt;p&gt;Remember that &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; was defined as a quantile from the normal distribution. By expressing the solution as I have, this results has the form of a traditional normal-based confidence interval:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\mbox{Estimate} \pm \mbox{Critical Value}\times\mbox{Std Error}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The last thing to note is that &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = \hat{p}\)&lt;/span&gt;. Remember that Wilson’s formulation started out with the sampling distribution of the sample proportion, so that’s all &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt; is here (a fact which we used in the derivation above, turning &lt;span class=&#34;math inline&#34;&gt;\(p_{0}\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(x_{0}\)&lt;/span&gt; by multiplying by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;Agresi and Coull wanted to simplify this a bit, so they used the same estimator, defining:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+\tilde{x} &amp;amp;= x + \kappa^{2}/2 \\
+\tilde{n} &amp;amp;= n + \kappa^{2}   \\
+\tilde{p} &amp;amp;= \tilde{x} / \tilde{n}
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which is adding some number of trials, evenly split between successes and failures. They then use this &lt;span class=&#34;math inline&#34;&gt;\(\tilde{p}\)&lt;/span&gt; in the “standard” form of the confidence interval. In this way they create a much better-behaving confidence interval, but which is a bit more straightforward and easier to remember than the Wilson interval.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alternative-2-bayesian-method&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Alternative 2: Bayesian method&lt;/h3&gt;
+&lt;p&gt;Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+X | p &amp;amp;\sim \mbox{Binomial(n,p)} \\
+p     &amp;amp;\sim \mbox{Beta}(\alpha, \beta)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Setting &lt;span class=&#34;math inline&#34;&gt;\(\alpha=\beta=1\)&lt;/span&gt; results in a uniform or “flat” prior, meaning we don’t have any initial judgment on whether &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is likely to be large or small, all possible values of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; are equally likely. Then, if we call the likelihood &lt;span class=&#34;math inline&#34;&gt;\(L(x|p)\)&lt;/span&gt; and the prior &lt;span class=&#34;math inline&#34;&gt;\(\pi(p)\)&lt;/span&gt;, the posterior for &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is found by:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\pi(p|x) \propto L(x|p)\pi(p)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;So, inserting the Binomial PMF for &lt;span class=&#34;math inline&#34;&gt;\(L(x|p)\)&lt;/span&gt; and the Beta PDF for &lt;span class=&#34;math inline&#34;&gt;\(\pi(p)\)&lt;/span&gt;, we get:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\pi(p|x) &amp;amp;\propto \binom{n}{x}p^{x}(1-p)^{n-x} \times \dfrac{p^{\alpha-1}(1-p)^{\beta-1}}{B(\alpha,\beta)}  \\
+&amp;amp;\propto p^{x - \alpha-1}(1-p)^{n - x + \beta-1}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Formally, we should be performing some integration, but since we’re really interested in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; here, I just want to see what the form of the resulting posterior will look like, and in this case it’s another Beta distribution, specifically, a &lt;span class=&#34;math inline&#34;&gt;\(\mbox{Beta}(x+\alpha, n-x+\beta)\)&lt;/span&gt; distribution.&lt;/p&gt;
+&lt;p&gt;With this posterior distribution, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;, and observed &lt;span class=&#34;math inline&#34;&gt;\(x=1\)&lt;/span&gt; occurrences of the event of interest. Then taking &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \beta = 1\)&lt;/span&gt; (the uniform prior on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;), our posterior would look like below. Note that the x-axis is fairly truncated!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The Wilson estimate, for reference, would be:&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt; =  =  = 0.0542&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparisons&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Comparisons&lt;/h2&gt;
+&lt;p&gt;So that’s an overview of three methods for estimating &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (both a point estimate and a confidence interval), but how to they compare to each other? We computed the coverage probability before, so let’s follow the same framework and compute the coverage probability for all four intervals. As before, this won’t be a simulation, but exact coverage probabilities.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We see here again that the standard interval performs poorly, but now we can see how the alternatives stack up against it. The Agresti-Coull interval tends to have the highest coverage probability, while the Wilson and Bayes intervals are very close (being on top of each other much of the time!).&lt;/p&gt;
+&lt;p&gt;In another way of thinking about the intervals, we can consider the &lt;em&gt;expected interval length&lt;/em&gt;. Recall when I computed the interval, I’d take a given value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and compute the interval for all possible values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. So when I calculated the interval, I also obtained the length of the interval and computed a weighted average (with weight &lt;span class=&#34;math inline&#34;&gt;\(P(X=x)\)&lt;/span&gt;) of the lengths. We see that result below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Certainly for smaller sample sizes, the Wilson and Bayes intervals produce shorter intervals (that is: more precision on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;). One may be tempted to think that for small &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; &lt;em&gt;and&lt;/em&gt; small &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; the standard interval is good here, but don’t forget the coverage probability: It drops precipitously at that point! Once we get much beyond &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt; there isn’t much difference between the Wilson, Agresti-Coull, and Bayes intervals.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;In this post we explored estimating a Binomial proportion, seeing how the standard method is derived, and why it’s bad, and explored some alternatives (including their derivation). Based on the coverage probabilities and interval lengths, my suggestion would be to use either the Wilson or Bayes intervals - they both have good coverage, and tend to be shorter than the Agresti-Coull interval. The Agresti-Coull has slightly higher coverage probability, but that comes at the expense of a longer interval. That being said, it depends on the behavior you want to see. The Wilson and Bayes intervals seem to have 95% coverage probability &lt;em&gt;on average&lt;/em&gt;, while the Agresti-Coull interval seems to maintain &lt;em&gt;at least&lt;/em&gt; 95% coverage (or very close to it) throughout.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>One or two tails?</title>
+      <link>/post-stats/one-or-two-tailed-tests/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post-stats/one-or-two-tailed-tests/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Should you use a two-tailed test or a one-tailed test (or similarly, a confidence interval or 1-sided confidence bound)? For those just learning statistics, or who have had only a little training in the subject, this question comes up fairly often. And there is some conflicting information and advice out there. Most often I’ve seen comments critical of one-sided methods, such as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The short answer is: Never use one tailed tests.
+- &lt;a href=&#34;https://www.theanalysisfactor.com/one-tailed-and-two-tailed-tests/&#34;&gt;The Analysis Factor&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Two-Tailed Tests are the Default Choice
+- &lt;a href=&#34;https://statisticsbyjim.com/hypothesis-testing/use-one-tailed-tests/&#34;&gt;Statistics by Jim&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Though I did come across at least one person I’ve seen suggests the opposite!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I actually intend to go all the way and argue that barring some very narrow use-cases, one should never use a two-tailed statistical test.
+- &lt;a href=&#34;https://blog.analytics-toolkit.com/2017/one-tailed-two-tailed-tests-significance-ab-testing/&#34;&gt;Analytics Toolkit blog&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I disagree with all of these statements to varying degrees, though mostly the first and the third. In this post, I’ll try to clarify how to think about this so that you can know whether to use a 1-sided or 2-sided test (spoiler: It has &lt;del&gt;nothing&lt;/del&gt; little to do with Statistics). As an aside, “1-tailed” and “2-sided” are interchangable terms, and for the 1-tailed methods, there can be upper-tail or lower-tail.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;crash-course-on-hypothesis-testing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Crash course on hypothesis testing&lt;/h2&gt;
+&lt;p&gt;Understanding 1- or 2-tailed methods is probably easiest to describe in terms of hypothesis testing, but the same concepts apply to interval estimation (instead of, e.g., a confidence interval, you can construct a 1-sided confidence bound). So to start off, I’ll give a very short summary of basic hypothesis testing. I’m going to focus on a 1-sample t-test, but the same ideas will apply to any situation where you can have two tails. If you already understand t-tests, you probably want to skip to the next section.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt; Define your null and alternative hypotheses. Here are two such sets, for an upper-tail and two-tailed test, respectively, on the mean.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upper tailed: &lt;span class=&#34;math inline&#34;&gt;\(H_{o}: \mu \leq \mu_{0}\)&lt;/span&gt; vs &lt;span class=&#34;math inline&#34;&gt;\(H_{a}: \mu &amp;gt; \mu_{0}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Two tailed: &lt;span class=&#34;math inline&#34;&gt;\(H_{o}: \mu = \mu_{0}\)&lt;/span&gt; vs &lt;span class=&#34;math inline&#34;&gt;\(H_{a}: \mu \ne \mu_{0}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In these, &lt;span class=&#34;math inline&#34;&gt;\(\mu_{0}\)&lt;/span&gt; is some hypothesized value, some value we are interested in comparing against.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt; Select a significance level, denoted by &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. This is the probability of committing a Type I error. This is the event in which we reject the null hypothesis when we should not have, because the null hypothesis is actually true. Any probability can be selected here, some common values are 0.1, 0.05, and 0.01. In practice we will not know whether or not a commit a Type I error.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3:&lt;/strong&gt; From the data, compute the test statistic which (under certain assumptions) will follow a particular sampling distribution. One of the most basic examples is the t-test, where the test statistic is &lt;span class=&#34;math inline&#34;&gt;\(t = (\bar{x} - \mu_{0}) / (s / \sqrt{n} )\)&lt;/span&gt; will follow a t-distribution (assuming the conditions are satisfied).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt; We then put this test statistic on the t-distribution and see if it falls into the rejection region (RR). This RR is determined from the significance level, depending on how the alternative hypothesis is specified. For an upper-tail test, all of the &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; probability is piled into the upper tail. For a two-tailed test, the α probability is split between the two tails. I made a graphic to illustrate this.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-10-10-one-or-two-tails.en_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For each figure, the shaded region represents 5% of the total area. But we have arranged that 5% differently, because the tests are answering different questions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 5:&lt;/strong&gt; Reject or fail to reject the null hypothesis. From that decision, you’d then take appropriate action - or not. I’ll provide a couple examples further on.&lt;/p&gt;
+&lt;p&gt;If you’re more familiar with p-values or critical values, do not fear. There’s a 1-1 correspondence between these. The RR is bounded by the &lt;em&gt;critical value&lt;/em&gt;, which is the value at which the tail probability is equal to &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. Hence:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If the test statistic is in the rejection region (&lt;span class=&#34;math inline&#34;&gt;\(t \in RR\)&lt;/span&gt;), then &lt;span class=&#34;math inline&#34;&gt;\(p \leq \alpha\)&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-to-choose-1-or-2-tails&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How to choose 1 or 2 tails&lt;/h2&gt;
+&lt;p&gt;Okay, so that was a very quick overview of hypothesis testing. Then we come to the question of whether we should use a 1-tailed or 2-tailed method. To understand this, we need to understand what we’re actually doing when testing a hypothesis. Usually, we arrange the hypotheses so that the alternative hypothesis represents an actionable event, and the null hypothesis is the “status quo.” This means that when we reject the null hypothesis, we’re going to do something. I read and comment on the subreddits &lt;a href=&#34;https://www.reddit.com/r/Statistics&#34;&gt;r/statistics&lt;/a&gt; and &lt;a href=&#34;https://www.reddit.com/r/AskStatistics&#34;&gt;r/AskStatistics&lt;/a&gt; (among others). There, I think a user with the handle &lt;a href=&#34;https://www.reddit.com/user/The_Sodomeister&#34;&gt;The_Sodomister&lt;/a&gt; phrased it well: Rejecting the null hypothesis means we “take action.” On the other hand, failing to reject the null hypothesis means we do &lt;em&gt;not&lt;/em&gt; take action.&lt;/p&gt;
+&lt;p&gt;So we need to consider the context of the data, and whether we care about the direction. Let’s consider a couple of examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Airlines regularly overbook flights (sell more tickets than they have seats). But for various reasons, not everyone shows up for their flight, so it often balances out. What they really care about is how many people show up, since too many people showing up means they have to pay out to reimburse anyone who can’t board that flight. So if they find that too many people will show up, they’ll take action by overbooking to a smaller degree. However, if too few people show up, well, those people paid for their ticket anyway, so the airline isn’t really losing out (that being said, they could be interested in the lower bound, so that they can overbook even further!).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A pharmaceutical company is developing a new drug as an alternative to an existing drug. They’re doing the science to try to improve upon the existing drug, so they’d like to see improved outcomes. But it is extremely important to know if the new treatment actually leads to &lt;em&gt;worse&lt;/em&gt; outcomes. So even though the company wants to show an effect in a particular direction, they also need to be able to detect if the effect is in the opposite direction. So the company will take action in either case (push the drug to market, or end R&amp;amp;D on the drug). So a two-tailed test would be of interest.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An engineer is designing a critical component for a rocket to send astronauts into space. That component has some failure rate, and a failure would mean the loss of millions or billions of dollars, and possibly lead to the death of the astronauts.
+Since this component was carefully designed and manufactured, the plan is to use it unless the error rate is too high. So the engineer is really only interested in the upper tail, how larger might the failure rate be, rather than how low it might be; they essentially treat the upper bound as “It’s possible for the error rate to be as large as X%, so we’re going to assume it is X%.” The question then fundamentally becomes “Is X% too high?”&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An individual is considering whether to buy more of a particular stock, so they look at the average daily returns. They are interested if the daily return is positive, since they would then like to buy more. However, if the daily return is negative, that probably would lead to an action as well (say, selling that stock). Hence, detecting an effect in both directions is important.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To conduct a 1-tailed test, the opposite tail needs to be of utterly no concern. In the stock example, we would have to &lt;em&gt;not care at all&lt;/em&gt; if the stock’s price was negative. There’s a good chance that’s not the case. That said, I’m no economist. Maybe for a prospective investor who doesn’t own any stock yet, their default position would be “Don’t invest,” so they really don’t care if the returns are negative, they’re only going to take action if the returns are positive.&lt;/p&gt;
+&lt;p&gt;What’s important is specifying up-front what question we are interested in answering, and what results would cause us to take action. These should be clarified before data is collected. The statistical hypotheses and direction of the method are consequences of the answers. So as I hinted at before: This isn’t really really part of the statistical method, it’s part of the research hypothesis. This means it’s a &lt;em&gt;subject-matter&lt;/em&gt; issue more than it is a &lt;em&gt;statistical&lt;/em&gt; issue.&lt;/p&gt;
+&lt;p&gt;If we only take action for a particular direction, then we should only be testing in that direction. If we would take action for both directions, then we should test in both directions. The statistical part of this is, in my opinion, simply translating the question of interest from English (or whatever your language of choice might be) into statistical terms, such as be proposing a statistical model and rephrasing the question in terms of statistical parameters.&lt;/p&gt;
+&lt;p&gt;So I guess my take-away or tl;dr for this would be:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you only care about (or would only take action) for results in a particular direction, then only test in that direction.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;trailing-thoughts&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Trailing thoughts&lt;/h2&gt;
+&lt;p&gt;There are a few comments I want to make that I didn’t find a good place to work into the above discussion.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;One of the quotes that I started off with said that two-tailed tests should be the default. The reason I disagree with this is that I don’t think there should be a “default” and an “exception.” I think we should carefully assess the context, but not be predisposed to one or the other.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;This whole discussion only applies to a subset of statistical methods. Some methods, such as Analysis of Variance (ANOVA) are inherently 2-tailed. However, there are some directional variants, broadly described as tests for &lt;em&gt;ordered alternatives&lt;/em&gt;, which put a series of inequalities (&lt;span class=&#34;math inline&#34;&gt;\(\leq\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(\geq\)&lt;/span&gt;) into the alternative hypothesis.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An old and reasonably well-known one is the &lt;a href=&#34;https://en.wikipedia.org/wiki/Jonckheere%27s_trend_test&#34;&gt;Jonckheere–Terpstra test&lt;/a&gt;, which modifies a nonparametric ANOVA for the case of ordered alternatives.&lt;/li&gt;
+&lt;li&gt;For some shameless self-promotion, some of my research has been on the subject of ordered alternatives. See for example the papers on which I am co- or lead-author,
+&lt;a href=&#34;https://jelsema.github.io/publication/2018-osin/&#34;&gt;Davidov, Jelsema, &amp;amp; Peddada (2018)&lt;/a&gt; and
+&lt;a href=&#34;https://jelsema.github.io/publication/2016-clme/&#34;&gt;Jelsema &amp;amp; Peddada (2016)&lt;/a&gt;. In addition, a doctoral student I worked with at WVU used these methods in two applied papers,
+&lt;a href=&#34;https://jelsema.github.io/publication/2017-test-fire1/&#34;&gt;Law, Morris, &amp;amp; Jelsema (2017)&lt;/a&gt; and
+&lt;a href=&#34;https://jelsema.github.io/publication/2018-test-fire2/&#34;&gt;Law, Morris, &amp;amp; Jelsema (2018)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Robust estimation of reduced rank models to large spatial datasets</title>
