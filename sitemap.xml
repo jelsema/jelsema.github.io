@@ -18,8 +18,58 @@
   </url>
   
   <url>
+    <loc>/tags/categorical/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
-    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-stats/estimating-proportions-for-finite-populations/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/hypergeometric/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/lecture/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/methods/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/proportion/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rare-events/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/stat101/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post-stats/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-11-27T08:44:07-07:00</lastmod>
   </url>
   
   <url>
@@ -28,7 +78,7 @@
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/categories/opinion/</loc>
     <lastmod>2020-11-21T17:11:38-07:00</lastmod>
   </url>
   
@@ -39,11 +89,6 @@
   
   <url>
     <loc>/categories/politics/</loc>
-    <lastmod>2020-11-21T17:11:38-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-11-21T17:11:38-07:00</lastmod>
   </url>
   
@@ -73,37 +118,7 @@
   </url>
   
   <url>
-    <loc>/tags/categorical/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post-stats/estimating-binomial-proportions/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/lecture/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/methods/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rare-events/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/stat101/</loc>
-    <lastmod>2020-10-12T10:51:24-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post-stats/</loc>
     <lastmod>2020-10-12T10:51:24-06:00</lastmod>
   </url>
   
@@ -315,6 +330,21 @@
   <url>
     <loc>/publication/2019-threshold-knots/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/privacy/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/terms/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>

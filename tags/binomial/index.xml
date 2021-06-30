@@ -55,7 +55,8 @@
 &lt;ul&gt;
 &lt;li&gt;Talk about the common approach usually taught in intro stats.&lt;/li&gt;
 &lt;li&gt;Explain why that approach is not so great, for two reasons.&lt;/li&gt;
-&lt;li&gt;Introduce two alternative approaches.&lt;/li&gt;
+&lt;li&gt;Introduce two alternative approaches and explain how they arise.&lt;/li&gt;
+&lt;li&gt;Compare the performance of the intervals.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-common-approach&#34; class=&#34;section level2&#34;&gt;
@@ -68,7 +69,7 @@
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \hat{p} \pm Z_{\alpha/2} \sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;This is the confidence interval that is often (though not universally) taught in introductory statistics as the default.&lt;/p&gt;
+&lt;p&gt;This is the confidence interval that is often (though not universally) taught in introductory statistics as the “default” or “standard.”&lt;/p&gt;
 &lt;p&gt;As a side-note, it may be easier for beginners to “see” the asymptotic normality arising as a consequence of the normal approximation to the binomial distribution. If &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mbox{Bin}(n,p)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(X \stackrel{\text{aprx}}{\sim} N( np, np(1-p) )\)&lt;/span&gt; under &lt;a href=&#34;https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation&#34;&gt;certain conditions&lt;/a&gt; that are not consistent from source to source. There are &lt;a href=&#34;https://math.stackexchange.com/questions/578935/how-to-prove-that-the-binomial-distribution-is-approximately-close-to-the-normal&#34;&gt;different ways&lt;/a&gt; to go about establishing this, one of which is via the Central Limit Theorem.&lt;/p&gt;
 &lt;div id=&#34;common-approach-the-math&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Common Approach: The math&lt;/h3&gt;
@@ -91,7 +92,7 @@ n\hat{p} &amp;amp;= x \\
 \hat{p} &amp;amp;= \dfrac{x}{n}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;From there, we want the standard error of our MLE, which is just the square root of the variance.&lt;/p&gt;
+&lt;p&gt;We also want the standard error of our MLE, which is just the square root of the variance.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 V\left[ \hat{p} \right] &amp;amp;= V\left[ \dfrac{X}{n} \right] \\
@@ -121,7 +122,7 @@ z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
 &lt;/div&gt;
 &lt;div id=&#34;why-the-common-approach-is-bad&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Why the common approach is bad&lt;/h3&gt;
-&lt;p&gt;So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the &lt;em&gt;coverage probability&lt;/em&gt; of the confidence interval. If we consider the coverage probability across a range of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; values, we’ll see that it often drops below the nominal value. The figure below shows the coverage probability for each &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (in the interval &lt;span class=&#34;math inline&#34;&gt;\([0.02,0.98]\)&lt;/span&gt;) at a selection of sample sizes.&lt;/p&gt;
+&lt;p&gt;So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the &lt;em&gt;coverage probability&lt;/em&gt; of the confidence interval. If we consider the coverage probability across a range of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; values, we’ll see that it often drops below the nominal value, especially so at the tails, where &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is close to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. The figure below shows the coverage probability for each &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (in the interval &lt;span class=&#34;math inline&#34;&gt;\([0.02,0.98]\)&lt;/span&gt;) at a selection of sample sizes.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is a similar pattern as shown in several figures from &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt; (which I’ll abbreviate BCD), for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; for a selection of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
@@ -135,7 +136,7 @@ We need to know the probability that, when &lt;span class=&#34;math inline&#34;&
 &lt;li&gt;From &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;, compute the endpoints of the confidence interval.&lt;/li&gt;
 &lt;li&gt;For each confidence interval, determine whether the true value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; has been captured.&lt;/li&gt;
 &lt;li&gt;Identify the bounds of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which result in “successful” confidence intervals. That is, determine &lt;span class=&#34;math inline&#34;&gt;\(X_{max}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt;, the largest and smallest values of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which produce a confidence interval which captures &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. For example, when &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, if &lt;span class=&#34;math inline&#34;&gt;\(X=60\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt;, then the CI is &lt;span class=&#34;math inline&#34;&gt;\((0.504, 0.696)\)&lt;/span&gt;, which does not capture &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;Compute the probability that &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is contained in the interval &lt;span class=&#34;math inline&#34;&gt;\([X_{min}, X_{min}]\)&lt;/span&gt;. Since we know &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, this is just a binomial probability: &lt;span class=&#34;math inline&#34;&gt;\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)&lt;/span&gt;. Note we subtract 1, because &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; is a valid value, so &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; needs to be strictly below &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; for the interval to fail.&lt;/li&gt;
+&lt;li&gt;Compute the probability that &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is contained in the interval &lt;span class=&#34;math inline&#34;&gt;\([X_{min}, X_{max}]\)&lt;/span&gt;. Since we know &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, this is just a binomial probability: &lt;span class=&#34;math inline&#34;&gt;\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)&lt;/span&gt;. Note we subtract 1, because &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; is a valid value, so &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; needs to be strictly below &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; for the interval to fail.&lt;/li&gt;
 &lt;li&gt;Repeat steps 1-6 for a sequence of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; from some “small” value to some “large” value (as indicated, I chose &lt;span class=&#34;math inline&#34;&gt;\(0.02\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(0.98\)&lt;/span&gt;).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Developing this idea and creating the code to produce a plot like the above would probably be a good exercise for a low-level statistics course that includes a probability component.&lt;/p&gt;
@@ -230,7 +231,7 @@ p  &amp;amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{
 &lt;/div&gt;
 &lt;div id=&#34;alternative-2-bayesian-method&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Alternative 2: Bayesian method&lt;/h3&gt;
-&lt;p&gt;Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:&lt;/p&gt;
+&lt;p&gt;Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower mathematical level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 X | p &amp;amp;\sim \mbox{Binomial(n,p)} \\
@@ -249,9 +250,9 @@ p     &amp;amp;\sim \mbox{Beta}(\alpha, \beta)
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Formally, we should be performing some integration, but since we’re really interested in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; here, I just want to see what the form of the resulting posterior will look like, and in this case it’s another Beta distribution, specifically, a &lt;span class=&#34;math inline&#34;&gt;\(\mbox{Beta}(x+\alpha, n-x+\beta)\)&lt;/span&gt; distribution.&lt;/p&gt;
-&lt;p&gt;With this posterior distribution, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;, and observed &lt;span class=&#34;math inline&#34;&gt;\(x=1\)&lt;/span&gt; occurrences of the event of interest. Then taking &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \beta = 1\)&lt;/span&gt; (the uniform prior on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;), our posterior would look like below. Note that the x-axis is fairly truncated!&lt;/p&gt;
+&lt;p&gt;With this posterior distribution, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;, and observed &lt;span class=&#34;math inline&#34;&gt;\(x=1\)&lt;/span&gt; occurrences of the event of interest. Then taking &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \beta = 1\)&lt;/span&gt; (which is a uniform prior on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;), our posterior would look like below. Note that the x-axis is fairly truncated!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The Wilson estimate, for reference, would be:&lt;/p&gt;
+&lt;p&gt;The estimate using the Wilson approach with 95% confidence, for reference, would be:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \tilde{p} = \dfrac{1 + 1.96^2/2}{50 + 1.96^2} = \dfrac{2.921}{53.84} = 0.0542
 \]&lt;/span&gt;&lt;/p&gt;

@@ -5,12 +5,44 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 21 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>categorical</title>
+      <link>/tags/categorical/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/tags/categorical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hypergeometric</title>
+      <link>/tags/hypergeometric/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/tags/hypergeometric/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>proportion</title>
+      <link>/tags/proportion/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/tags/proportion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rare events</title>
+      <link>/tags/rare-events/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/tags/rare-events/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>elections</title>
@@ -33,22 +65,6 @@
       <link>/tags/binomial/</link>
       <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
       <guid>/tags/binomial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>categorical</title>
-      <link>/tags/categorical/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/categorical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rare events</title>
-      <link>/tags/rare-events/</link>
-      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/rare-events/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>proportion | Organized Chaos</title>
+    <link>/tags/proportion/</link>
+      <atom:link href="/tags/proportion/index.xml" rel="self" type="application/rss+xml" />
+    <description>proportion</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>proportion</title>
+      <link>/tags/proportion/</link>
+    </image>
+    
+    <item>
+      <title>Estimating proportions for finite populations</title>
+      <link>/post-stats/estimating-proportions-for-finite-populations/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/post-stats/estimating-proportions-for-finite-populations/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/viz/viz.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/DiagrammeR-styles/styles.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/grViz-binding/grViz.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In a &lt;a href=&#34;https://jelsema.github.io/post-stats/estimating-binomial-proportions/&#34;&gt;previous post&lt;/a&gt; I talked about estimating a binomial proportion, including for rare events. The reason I wrote that was for background to this post. Here, we’ll again be looking at estimating proportions - and can include rare events - but with an added wrinkle: A population that is finite.&lt;/p&gt;
+&lt;p&gt;In the Binomial case, every observation is assumed to be independent and have a fixed probability of the outcome of interest (a “success” or a “failure”). But when the population is finite, then the probability of success changes. One of the quintessential examples is dealing cards from a well-shuffled standard deck without replacement (that is: draw the card, and don’t put it back). Say we’re interested in the probability of getting a spade. On the first draw, this is 13/52. But the second card is either 13/51 (if the first card was not a spade) or 12/51 (if the first card was a spade), neither of which are the same as 13/52.&lt;/p&gt;
+&lt;p&gt;Sampling binary outcomes (e.g., “spade” vs “not a spade”) from a finite population gives rise to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Hypergeometric_distribution&#34;&gt;hypergeometric distribution&lt;/a&gt;. This is defined as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+P(X = k) = \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(k \in \left( \max(0,n+M-N)\)&lt;/span&gt; and&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the size of the population.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; is the number of successes (or whatever event of interest) in the population.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the number of samples taken.&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; is the number of successes in the sample.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What this is doing is just counting the number of ways, when drawing &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; samples, to get &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; successes.&lt;/p&gt;
+&lt;p&gt;The same situation arises in other - very practical - scenarios.&lt;/p&gt;
+&lt;p&gt;Cars have a specific year and model. Once the next “year-model” starts, no more of the previous year’s version can be manufactured. Hence, there are a finite number of, say, 2011 Chevy Cruzes available. If a problem is detected with that year-model, then the number of 2011 Chevy Cruzes which have this problem will follow a hypergeometric distribution.&lt;/p&gt;
+&lt;p&gt;For example, my own vehicle was subject to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Takata_Corporation#Recalls&#34;&gt;Takata Corp&lt;/a&gt; airbag recall. From that wiki page, I found there were recalls of &lt;a href=&#34;https://en.wikipedia.org/wiki/Chevrolet_Cruze#Reliability_and_recalls&#34;&gt;Chevy Cruze&lt;/a&gt; models as well.&lt;/p&gt;
+&lt;p&gt;Generalizing this idea, many components are manufactured in “batches” of some sort. That could be particular &lt;a href=&#34;see%20General%20Mills,%202019&#34;&gt;date(s) of production&lt;/a&gt; or &lt;a href=&#34;https://www.npr.org/2020/11/06/929078678/cdc-report-officials-knew-coronavirus-test-was-flawed-but-released-it-anyway&#34;&gt;batchs&lt;/a&gt; of raw materials. Additionally, there could be errors in the manufacturing or assembly which could potentially affect some but not all of the units produced on that day.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;estimation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Estimation&lt;/h2&gt;
+&lt;p&gt;When the population is finite, there are generally two possible questions of interest. Looking at the parameters of the hypergeometric distribution, this should become relatively clear: Since &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; are values from the &lt;em&gt;sample&lt;/em&gt; (which is &lt;em&gt;observed&lt;/em&gt;), they are fully known and not subject to uncertainty. Instead, either &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; will be the unknown quantity (hopefully not both!). In this post, I’m going to focus on the former, so the scenario can be phrased as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For a population of size &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, we take a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and observe &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; defective units. Our goal is to estimate &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;, the &lt;em&gt;total&lt;/em&gt; number of defective units.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With a finite population, interest in the total number of defectives is directly related to interest in the population proportion of defectives. If we have &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; defectives in a population of size &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, then the population proportion of defectives is &lt;span class=&#34;math inline&#34;&gt;\(p = M/N\)&lt;/span&gt;. So if we estimate &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; (perhaps with some interval bounds) we can easily convert to a proportion by dividing by the non-random population size &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;. We could also go the other way, but &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is more interpretable than &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;, so it’s more natural to put results in terms of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So how do we estimate the proportion? As with the case of infinite populations I discussed in my &lt;a href=&#34;https://jelsema.github.io/post-stats/estimating-binomial-proportions/&#34;&gt;previous post&lt;/a&gt;, there are several approaches. One of them is the same as the “typical” approach: Divide the observed number of defectives by the sample size, &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = k/n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;A wrinkle in this, however, is that when the population is finite, the samples are not independent, there is some covariance. As a result of this, the standard errors from before are no longer correct. One way of addressing this is through what’s called the Finite Population Correction Factor (FPCF).&lt;/p&gt;
+&lt;div id=&#34;finite-population-correction-factor&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Finite population correction factor&lt;/h3&gt;
+&lt;p&gt;I think the “easy” way to see how the FPCF come about is to look at the mean and variance of the hypergeometric distribution. These are:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+E[X] = \mu &amp;amp;= n \dfrac{M}{N} \\
+ &amp;amp; \\
+V[X] = \sigma^{2} &amp;amp;= n \dfrac{M}{N} \dfrac{N-M}{N} \dfrac{N-n}{N-1}  
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Remember that the hypergeometric distribution is dealing with the &lt;em&gt;number&lt;/em&gt; of successes (in our case, defective units), so we take &lt;span class=&#34;math inline&#34;&gt;\(X/n\)&lt;/span&gt; to deal with the proportion. This factor of &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt; gets squared in the variance, so we have:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+E[X/n] = p &amp;amp;= \dfrac{M}{N} \\
+ &amp;amp; \\
+V[X/n] = \sigma^{2}_{p} &amp;amp;= \dfrac{1}{n} \dfrac{M}{N} \dfrac{N-M}{N} \dfrac{N-n}{N-1}  
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Dividing the number of defects by the sample size gets us the proportion, so in the expected value, this becomes the population proportion, &lt;span class=&#34;math inline&#34;&gt;\(p = M/N\)&lt;/span&gt;, which makes sense. If we rewrite the variance in terms of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, we get:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\sigma^{2}_{p} = \dfrac{1}{n} p(1-p) \dfrac{N-n}{N-1} = \dfrac{p(1-p)}{n} \left(\dfrac{N-n}{N-1}\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This expression looks very close to the “ordinary” version of the standard error of &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt; when sampling from a Binomial distribution. There’s just an extra bit that the variance is getting multiplied by. This is the FPCP:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\mbox{FPCP} = \dfrac{N-n}{N-1}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;There is another derivation of this for a more general case (just assuming a mean and a variance), but it’s fairly long, so I don’t want to get side-tracked with that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bayesian-estimation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Bayesian estimation&lt;/h3&gt;
+&lt;p&gt;As before, I’ve been interested in the Bayesian approach to this problem. There’s a paper by &lt;a href=&#34;https://link.springer.com/article/10.1007/s13253-015-0239-9&#34;&gt;Jones &amp;amp; Johnson (2015)&lt;/a&gt; that talks about this (as a precursor to a more complex idea). In section 2 of their paper, they have a nice summary of the approach using a concept called &lt;em&gt;superpopulation&lt;/em&gt;. This is a way of describing a theoretical population from which our population is drawn.&lt;/p&gt;
+&lt;p&gt;Clear as mud, right? I think of it this way: We have a population of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; units, of which &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; are defectives (and so there is proportion &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; defectives). But we can consider a more general process from which our population was drawn. In this more general “superpopulation” there is some underlying proportion of defectives, which we will denote &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;. With this framework, we can consider the population as being a sample of size &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; from the superpopulation.&lt;/p&gt;
+&lt;p&gt;The next important bit of this is that we separate the population into the &lt;em&gt;observed&lt;/em&gt; and &lt;em&gt;unobserved&lt;/em&gt; samples. These are effectively two independent samples from a Binomial distribution, of sizes &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N-n\)&lt;/span&gt;, respectively. The diagram below is how I picture it.&lt;/p&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;grViz html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;diagram&#34;:&#34;digraph {\n  graph [layout = dot, rankdir = LR]\n\n  node [shape = rectangle, style = filled, fillcolor = lightblue]\n  A [label = \&#34;Superpopulation\n\n&lt;U+0001D70B&gt;\&#34;, shape = circle, width=3, fontsize=28]\n  \n  \n  subgraph cluster_population {\n    style=dotted; label=\&#34;Population\&#34;; fontsize=24;\n    node [shape = rectangle, style = filled, fillcolor = lightblue, width=2]\n  { \n    B [label = \&#34;Observed Sample\n\nx, n\&#34;, shape = circle, fontsize=20]\n    C [label = \&#34;Unobserved Sample\n\nM-x, N-n\&#34;, shape = circle, fontsize=20]\n  }\n  };\n\n  # edge definitions with the node IDs\n  A -&gt; B \n  A -&gt; C \n  B -&gt; A [style=dashed]\n  A -&gt; C [style=dashed]\n\n}&#34;,&#34;config&#34;:{&#34;engine&#34;:&#34;dot&#34;,&#34;options&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;In this, a solid arrow denotes the random sampling, and a dashed arrow denotes inference. So from the superpopulation we sample the population, but we conceptualize two independent samples: One which we observe, and the other which we do not. Then the &lt;em&gt;observed&lt;/em&gt; sample is used to infer about the superpopulation, and that information about the superpopulation is used to make probabalistic statements about the unobserved sample - that is: The rest of the population.&lt;/p&gt;
+&lt;p&gt;Jones &amp;amp; Johnson (2015) tell that inference about &lt;span class=&#34;math inline&#34;&gt;\(U = M-x\)&lt;/span&gt; (from which we can derive &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;, and therefore &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;) will make use of a &lt;a href=&#34;https://en.wikipedia.org/wiki/Beta-binomial_distribution&#34;&gt;Beta-binomial distribution&lt;/a&gt;, which I’ll denote &lt;span class=&#34;math inline&#34;&gt;\(betabin( N, \alpha, \beta)\)&lt;/span&gt;. This distribution has the following PDF:&lt;/p&gt;
+&lt;p&gt;$$
+P(U=k) =  ,&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(B(\cdot,\cdot)\)&lt;/span&gt; is the Beta function (a core feature of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Beta_distribution&#34;&gt;Beta distribution&lt;/a&gt;). It will be useful to see the form of this:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+B\left(\alpha, \beta \right) = \int_{0}^{1} x^{\alpha-1} (1-x)^{\beta-1} dx
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The Beta distribution is obtained “simply” by dividing both sides by &lt;span class=&#34;math inline&#34;&gt;\(B\left(\alpha, \beta \right)\)&lt;/span&gt; so that the integral comes out to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So how does the math work out? We will assuming the following likelihoods and prior:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+k|\pi &amp;amp;\sim \mbox{Bin}\left( n, \pi \right) \\
+U|\pi &amp;amp;\sim \mbox{Bin}\left( N-n, \pi \right) \\
+\pi &amp;amp;\sim \mbox{Beta}\left( \alpha, \beta \right)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then to get the distribution of &lt;span class=&#34;math inline&#34;&gt;\(U|k\)&lt;/span&gt;, we can say the following:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(U|k) &amp;amp;\propto f(U|\pi) f(\pi | k) \\ 
+      &amp;amp;=       f(U|\pi) \times \left[f(k | \pi) f(\pi)\right]
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The second term on the second line is mainly for clarity of what we’re doing. We already know the posterior distribution of a proportion when sampling from a Binomial distribution (since we walked through it in the previous post with infinite populations). With the likelihoods and priors denoted above, we can say that &lt;span class=&#34;math inline&#34;&gt;\(\pi|k \sim \mbox{Beta}( k+\alpha, n-k+\beta)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Now, the idea is to get at the distribution of &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;, so conceptually we could think of doing the following (which is why the Beta-binomial can be considered a Binomial distribution for which the probability of success is unknown and randomly drawn from a beta distribution):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f(U) = \int_{0}^{1} f(U|\pi) f(\pi)d\pi
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;But &lt;span class=&#34;math inline&#34;&gt;\(f(\pi)\)&lt;/span&gt; is selling ourselves short; we have more information than the prior, right? So really what we’re doing is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f(U|k) = \int_{0}^{1} f(U|\pi) f(\pi|k) d\pi
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This allows us to take advantage of what &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; told us about &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;. The dependence on &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; gets “inherited” from &lt;span class=&#34;math inline&#34;&gt;\(f(\pi|k)\)&lt;/span&gt;. The math is below, though for ease of notation, I’m going to write &lt;span class=&#34;math inline&#34;&gt;\(\alpha^{*}=k+\alpha\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta^{*} = n-k+\beta\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+f(U|k) &amp;amp;= &lt;em&gt;{0}^{1} f(U|) f(|k)f(|k) d\
+&amp;amp; \
+&amp;amp;= &lt;/em&gt;{0}^{1}  &lt;sup&gt;{u}(1-)&lt;/sup&gt;{N-n-u} 
+&lt;sup&gt;{&lt;/sup&gt;{&lt;em&gt;}-1} (1-)&lt;sup&gt;{&lt;/sup&gt;{&lt;/em&gt;}-1} d
+&amp;amp; \
+&amp;amp;\
+&amp;amp;= &lt;br /&gt;
+_{0}^{1} &lt;sup&gt;{u+&lt;/sup&gt;{&lt;em&gt;}-1}(1-)&lt;sup&gt;{N-n-u+&lt;/sup&gt;{&lt;/em&gt;}-1} d
+\end{aligned}&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;If you look back to the definition of the Beta function, you’ll note that the integral here is exactly that, so we can simplify this to:&lt;/p&gt;
+$$
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+f(U|k) &amp;amp;= \binom{N-n}{u}\dfrac{1}{B(\alpha^{*}, \beta^{*})}  
+          B( u + \alpha^{*}, N-n-u+\beta^{*})
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;This, we can note, is precisely the form of the Beta-binomial distribution. So we can say that:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+U|k \sim \mbox{betabinomial}( N-n, k+\alpha, n-k+\beta)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From the Beta-binomial distribution we can get values such as the median of &lt;span class=&#34;math inline&#34;&gt;\(U|x\)&lt;/span&gt;, or quantiles to form a credible interval. Hence, the Bayesian approach offers an alternative form of point and interval estimation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparison&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Comparison&lt;/h2&gt;
+&lt;p&gt;As before, I will compare the methods computationally, using the coverage probability as the metric of interest. This will need to be a bit more elaborate, since we have added another parameter, &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, into the mix. As before, I’m calculating &lt;em&gt;exact&lt;/em&gt; coverage probabilities, though now the hypergeometric distribution is used to find the probability that the number of defects is within the proper range.&lt;/p&gt;
+&lt;p&gt;Since the “standard” method was empirically worse than the others for the infinite population case, I’m no longer considering it, and will only compare the following three approaches:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Wilson interval with FPFC&lt;/li&gt;
+&lt;li&gt;Agresti-Coull interval with FPFC&lt;/li&gt;
+&lt;li&gt;Bayesian interval&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-27-estimating-proportions-for-finite-populations.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;As with the infinite-population case, these three intervals behave fairly similarly, with the Agresti-Coull interval being perhaps over-conservative (wider interval) in some cases. What is interesting to me is that the Bayesian interval dropped in coverage probability when the sampling rate was small (notably, the &lt;span class=&#34;math inline&#34;&gt;\(N=1000, n=10\)&lt;/span&gt; case). This will hopefully be a fairly rare occurrence - and in my practice has been - so I wouldn’t necessarily rule out the Bayesian interval.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;This was actually the post that I wanted to write, but I thought the &lt;a href=&#34;https://jelsema.github.io/post-stats/estimating-binomial-proportions/&#34;&gt;infinite population&lt;/a&gt; case needed to be covered first. Maybe that’s just my inner professor coming out and wanting to build concepts from the ground up. Anyway, I hope these posts were interesting, they were for me!&lt;/p&gt;
+&lt;!--- 
+
+## Sources that I looked at
+
+https://en.wikipedia.org/wiki/Beta-binomial_distribution
+
+https://en.wikipedia.org/wiki/Standard_error#Correction_for_finite_population
+
+Derivation?
+
+
+https://stats.stackexchange.com/questions/5158/explanation-of-finite-correction-factor
+
+https://stats.stackexchange.com/questions/299086/question-on-covariance-for-sampling-without-replacement
+
+
+https://math.stackexchange.com/questions/926478/how-does-accuracy-of-a-survey-depend-on-sample-size-and-population-size/1357604#1357604
+
+https://online.stat.psu.edu/stat415/lesson/6/6.3
+---&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Estimating binomial proportions for rare events</title>
+      <link>/post-stats/estimating-binomial-proportions/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post-stats/estimating-binomial-proportions/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-common-approach&#34;&gt;The common approach&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#common-approach-the-math&#34;&gt;Common Approach: The math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-the-common-approach-is-bad&#34;&gt;Why the common approach is bad&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alternatives&#34;&gt;Alternatives&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#alternative-1-wilson-and-agresi-coull-intervals&#34;&gt;Alternative 1: Wilson and Agresi-Coull intervals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#wilson-interval-the-math&#34;&gt;Wilson interval: The math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#alternative-2-bayesian-method&#34;&gt;Alternative 2: Bayesian method&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#comparisons&#34;&gt;Comparisons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Estimating a proportion gets covered in virtually every introductory statistics course, so why would I be writing a post about it? There are three reasons:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;One of my goals with these posts is to explain some basic statistical concepts.&lt;/li&gt;
+&lt;li&gt;The “standard” approach from many - possibly most - introductory books is &lt;em&gt;bad&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Especially when it is a “rare event” of interest, the standard method breaks down.&lt;/li&gt;
+&lt;li&gt;To motivate myself to do some of the math and write a simulation comparing the alternatives so that I better understand them.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For items 2 and 3, there are some modifications and alternatives which are not really that difficult or complicated, so I think they’re suitable for a general audience (though I can see why they’re less talked about in intro stats).&lt;/p&gt;
+&lt;p&gt;To introduce some notation, let’s consider a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; from an infinite population which has a proportion &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; of the outcome of interest, and in this sample we count &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; occurrences of the event of interest. For a couple of examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There is a stable manufacturing process creating some component, but a certain proportion of these components will exhibit a fatal flaw. We randomly sample 100 units and count the number with the flaw. This could be either presence/absence of some defect, or pass/fail inspection on a numeric measurement.&lt;/li&gt;
+&lt;li&gt;The CDC randomly selects a sample of 1000 individuals and counts how many of them test positive for a particular illness (influenza, COVID-19, etc).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post will be organized as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Talk about the common approach usually taught in intro stats.&lt;/li&gt;
+&lt;li&gt;Explain why that approach is not so great, for two reasons.&lt;/li&gt;
+&lt;li&gt;Introduce two alternative approaches and explain how they arise.&lt;/li&gt;
+&lt;li&gt;Compare the performance of the intervals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-common-approach&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The common approach&lt;/h2&gt;
+&lt;p&gt;When an introductory statistics textbook talks about estimating a binomial proportion, they will typically say that we estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; using &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = x / n\)&lt;/span&gt;. This estimate has a sample standard error &lt;span class=&#34;math inline&#34;&gt;\(se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}\)&lt;/span&gt;. From this, we can construct a &lt;em&gt;Wald statistic&lt;/em&gt;, which is asymptotically Normal, then we can use the asymptotic normality of Wald statistics to say that:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\dfrac{\hat{p}-p}{\sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}} \sim N( 0, 1)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If we use this to set up a 2-tailed test, we can then unpack it (or “invert” the test) to obtain a confidence interval:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat{p} \pm Z_{\alpha/2} \sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This is the confidence interval that is often (though not universally) taught in introductory statistics as the “default” or “standard.”&lt;/p&gt;
+&lt;p&gt;As a side-note, it may be easier for beginners to “see” the asymptotic normality arising as a consequence of the normal approximation to the binomial distribution. If &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mbox{Bin}(n,p)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(X \stackrel{\text{aprx}}{\sim} N( np, np(1-p) )\)&lt;/span&gt; under &lt;a href=&#34;https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation&#34;&gt;certain conditions&lt;/a&gt; that are not consistent from source to source. There are &lt;a href=&#34;https://math.stackexchange.com/questions/578935/how-to-prove-that-the-binomial-distribution-is-approximately-close-to-the-normal&#34;&gt;different ways&lt;/a&gt; to go about establishing this, one of which is via the Central Limit Theorem.&lt;/p&gt;
+&lt;div id=&#34;common-approach-the-math&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Common Approach: The math&lt;/h3&gt;
+&lt;p&gt;If you haven’t seen the math of deriving &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = x / n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}\)&lt;/span&gt; and would like to see, read on. If you know it already, or don’t have much calculus or probability theory background (maybe a calculus-based introductory statistics course), you may want to skip this subsection.&lt;/p&gt;
+&lt;p&gt;First we’ll derive &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt; using &lt;em&gt;maximum likelihood estimation&lt;/em&gt; (MLE, which is usually pronounced M-L-E, but one prof of mine pronounced “me-lee” which was always weird to me). To do this, we take the &lt;em&gt;likelihood&lt;/em&gt; of the data (in this case, a Binomial distribution), and find the value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; which maximizes it. Mathematically, this is just a calculus problem, and for the Binomial distribution is fairly straightforward.&lt;/p&gt;
+&lt;p&gt;The likelihood is the joint probability, but since we observe the data we think of the data as constant, and treat it as a function of the parameters of interest. In this case, the individual observations are Bernoulli (success/failure), and the joint probability is a Binomial distribution. Hence the likelihood is: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{L}(p|x) = \binom{n}{x}p^{x}(1-p)^{n-x}\)&lt;/span&gt;. The typical MLE approach is to take the derivative of the log-likelihood, since that won’t move the maximum, and generally makes solving easier.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L(p|X) &amp;amp;= \ln\mathcal{L}(p|X) = \ln \binom{n}{X} + X\ln(p) + (n-X)\ln(1-p) \\
+\dfrac{\partial}{\partial p}L(p|X) &amp;amp;= \dfrac{X}{p} - \dfrac{n-X}{1-p}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From there, we set the derivative to zero and solve for the parameter.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+0 &amp;amp;= \dfrac{x}{\hat{p}} - \dfrac{n-x}{1-\hat{p}} \\
+\dfrac{n-x}{1-\hat{p}} &amp;amp;= \dfrac{n}{\hat{p}} \\
+n\hat{p} - x\hat{p} &amp;amp;= x - x\hat{p} \\
+n\hat{p} &amp;amp;= x \\
+\hat{p} &amp;amp;= \dfrac{x}{n}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We also want the standard error of our MLE, which is just the square root of the variance.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+V\left[ \hat{p} \right] &amp;amp;= V\left[ \dfrac{X}{n} \right] \\
+&amp;amp;= \dfrac{1}{n^2} V\left[ X \right]
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then since &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; comes from a Binomial distribution, we know that &lt;span class=&#34;math inline&#34;&gt;\(V\left[ X \right] = np(1-p)\)&lt;/span&gt;, substituting that in results in:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+V\left[ \hat{p} \right] &amp;amp;= \dfrac{np(1-p)}{n^2} \\
+&amp;amp;= \dfrac{p(1-p)}{n}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Finally, a &lt;em&gt;Wald statistic&lt;/em&gt; is a statistic of the form:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+z = \dfrac{\hat{\theta} - \theta}{se(\hat{\theta})}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\hat{\theta}\)&lt;/span&gt; is the MLE. Since we have the MLE and its standard error, the Wald statistic is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then, because Wald statistics are asymptotically Normal, we use this statistic to obtain the confidence interval we saw before.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-the-common-approach-is-bad&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why the common approach is bad&lt;/h3&gt;
+&lt;p&gt;So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the &lt;em&gt;coverage probability&lt;/em&gt; of the confidence interval. If we consider the coverage probability across a range of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; values, we’ll see that it often drops below the nominal value, especially so at the tails, where &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is close to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. The figure below shows the coverage probability for each &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (in the interval &lt;span class=&#34;math inline&#34;&gt;\([0.02,0.98]\)&lt;/span&gt;) at a selection of sample sizes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is a similar pattern as shown in several figures from &lt;a href=&#34;https://projecteuclid.org/euclid.ss/1009213286&#34;&gt;Brown, Cai, &amp;amp; DasGupta (2001)&lt;/a&gt; (which I’ll abbreviate BCD), for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; for a selection of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here, the bottom-right figure is the same as their Figure 1. In both figures we see a very disturbing pattern: The coverage probability is usually below the nominal value, sometimes substantially so. Even at &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\(n=200\)&lt;/span&gt;, the coverage probability rarely gets up to the nominal value for any &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. This is discussed in more detail in Brown, Cai, &amp;amp; DasGupta (2001), as well as several responses to their paper (which are included in the publication I linked above).&lt;/p&gt;
+&lt;p&gt;An in addition to that, they are very jittery. Ideally we’d like to think that the coverage probability is a smooth function, but that’s not the case here. It’s a result of the underlying discreteness of of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, and there are “lucky” and “unlucky” combinations of &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aside:&lt;/strong&gt; These figures were not generated by simulation, they are exact coverage probabilities. It’s fairly straightforward to come up with the formula. For illustration, I’ll just pick a certain value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, say &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;.
+We need to know the probability that, when &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, the confidence interval we compute will actually contain the value &lt;span class=&#34;math inline&#34;&gt;\(0.20\)&lt;/span&gt;. But &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; isn’t what the confidence interval formula uses, right? Even if we know that &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, there are many possible values for &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;, which mean there are many possible values of the endpoints for the confidence interval. So to calculate the coverage probability, what we do (or what I did), was:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Set up a vector &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which contains the values &lt;span class=&#34;math inline&#34;&gt;\(0, 1, ..., n\)&lt;/span&gt;. This is the sequence of “successes”.&lt;/li&gt;
+&lt;li&gt;For each, compute &lt;span class=&#34;math inline&#34;&gt;\(\hat{p} = X/n\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;From &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;, compute the endpoints of the confidence interval.&lt;/li&gt;
+&lt;li&gt;For each confidence interval, determine whether the true value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; has been captured.&lt;/li&gt;
+&lt;li&gt;Identify the bounds of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which result in “successful” confidence intervals. That is, determine &lt;span class=&#34;math inline&#34;&gt;\(X_{max}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt;, the largest and smallest values of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; which produce a confidence interval which captures &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;. For example, when &lt;span class=&#34;math inline&#34;&gt;\(p=0.20\)&lt;/span&gt;, if &lt;span class=&#34;math inline&#34;&gt;\(X=60\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt;, then the CI is &lt;span class=&#34;math inline&#34;&gt;\((0.504, 0.696)\)&lt;/span&gt;, which does not capture &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Compute the probability that &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is contained in the interval &lt;span class=&#34;math inline&#34;&gt;\([X_{min}, X_{max}]\)&lt;/span&gt;. Since we know &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, this is just a binomial probability: &lt;span class=&#34;math inline&#34;&gt;\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)&lt;/span&gt;. Note we subtract 1, because &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; is a valid value, so &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; needs to be strictly below &lt;span class=&#34;math inline&#34;&gt;\(X_{min}\)&lt;/span&gt; for the interval to fail.&lt;/li&gt;
+&lt;li&gt;Repeat steps 1-6 for a sequence of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; from some “small” value to some “large” value (as indicated, I chose &lt;span class=&#34;math inline&#34;&gt;\(0.02\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(0.98\)&lt;/span&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Developing this idea and creating the code to produce a plot like the above would probably be a good exercise for a low-level statistics course that includes a probability component.&lt;/p&gt;
+&lt;!----------
+
+One reason for the behavior at the tails is because of what happens to the standard error. Remember that we estimate the standard error of $\hat{p}$ with $se(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})/n}.$
+If we think of this as a function of $\hat{p}$, it&#39;s basically of the form $y = x(1-x)$ (with $x$ bounded between $0$ and $1$). This function gets maximized when $x=0.5$, and when $x$ is close to $0$ or $1$, the function approaches zero. This means that the standard error of $\hat{p}$ gets arbitrarily close to zero. This shrinks the confidence interval and makes it less likely that we&#39;re able to capture the true value of $p$.
+
+----------&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alternatives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alternatives&lt;/h2&gt;
+&lt;p&gt;Now that we’re all convinced that the standard approach has some deficiencies, what are some alternatives? I’m going to talk about three, though two are very similar. For each I’ll try to provide a more intuitive overview, and then as before, dig into a bit of the math.&lt;/p&gt;
+&lt;div id=&#34;alternative-1-wilson-and-agresi-coull-intervals&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Alternative 1: Wilson and Agresi-Coull intervals&lt;/h3&gt;
+&lt;p&gt;There are two (very similar) intervals I’ll mention. BCD call them the &lt;em&gt;Wilson&lt;/em&gt; interval, and the &lt;em&gt;Agresti-Coull&lt;/em&gt; interval. The idea is to use a slightly modified estimator in place of &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\tilde{p} = \dfrac{X + \dfrac{\kappa^{2}}{2}}{n + \kappa^{2} }
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In this, in part to reduce notation, I’ve used &lt;span class=&#34;math inline&#34;&gt;\(\kappa = Z_{\alpha/2}\)&lt;/span&gt;, which is what BCD did.&lt;/p&gt;
+&lt;p&gt;This may look weird, but it’s actually not that strange. Notice that the general form &lt;span class=&#34;math inline&#34;&gt;\(X/n\)&lt;/span&gt; is still present, but there’s a little bit added to each. And notably, it’s adding precisely half as much to the numerator as to the denominator. The effect this has is like adding a few extra samples, of which half are successes and half are failures. For example, when we select 95% confidence, then &lt;span class=&#34;math inline&#34;&gt;\(\kappa = 1.96\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\kappa^{2} = 3.84\)&lt;/span&gt;, so we’re adding approximately 2 to the numerator, and approximately 4 to the denominator (which was the approach suggested by
+&lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.1998.10480550&#34;&gt;Agresti &amp;amp; Coull (1998)&lt;/a&gt;,
+alternative link on &lt;a href=&#34;https://www.jstor.org/stable/2685469&#34;&gt;JSTOR&lt;/a&gt;). This has an effect of pulling the estimate slightly closer to 0.5, and also prevents it from being exactly zero, which uases problems with the standard error.&lt;/p&gt;
+&lt;p&gt;Both the Wilson and Agresi-Coull approach use this as the point estimate, but the standard errors they use are slightly different.&lt;/p&gt;
+&lt;p&gt;The Wilson confidence interval uses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+se(\tilde{p}) = \left(\dfrac{\sqrt{n}}{n + \kappa^{2}}\right)\sqrt{\hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The Agresi-Coull confidence interval uses:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+se(\tilde{p}) = \sqrt{\dfrac{\tilde{p}(1-\tilde{p})}{\tilde{n}}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\tilde{n} = n+\kappa^{2}\)&lt;/span&gt;. With &lt;span class=&#34;math inline&#34;&gt;\(\tilde{n}\)&lt;/span&gt;, we could also define &lt;span class=&#34;math inline&#34;&gt;\(\tilde{X}=X+\kappa\)&lt;/span&gt; and write the point estimate as &lt;span class=&#34;math inline&#34;&gt;\(\tilde{p} = \tilde{X}/\tilde{n}\)&lt;/span&gt;. So the Agresi-Coull approach is really just the standard methods after having applied this adjustment of adding an equal number of successes and failures.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wilson-interval-the-math&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wilson interval: The math&lt;/h3&gt;
+&lt;p&gt;Alright, so how do we get these estimators and standard errors? BCD aren’t really focused on the derivation, so we need to go back to the source:
+&lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/01621459.1927.10502953&#34;&gt;Wilson (1927)&lt;/a&gt;
+(alternative: &lt;a href=&#34;https://www.jstor.org/stable/2276774&#34;&gt;JSTOR link&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Reading that, Wilson does something interesting. First, he considers the sampling distribution of the sample proportion.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In this, &lt;span class=&#34;math inline&#34;&gt;\(\sigma = \sqrt{p(1-p)/n}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; is some constant. He then points out that the probability of some value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; falling outside of the interval is &lt;span class=&#34;math inline&#34;&gt;\(p \pm \kappa\sigma\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(P( Z \geq \kappa)\)&lt;/span&gt;. The question is then how to extract &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; from this. What Wilson does is &lt;em&gt;square&lt;/em&gt; the distance between the true value &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and some sample proportion &lt;span class=&#34;math inline&#34;&gt;\(\hat{p}\)&lt;/span&gt;. And since we know that this distance is (with a probability determined by &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt;), we can equate the two.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\left(\hat{p} - p\right)^{2} = \left(\kappa\sigma\right)^2 = \dfrac{\kappa^{2}p(1-p)}{n}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Small note: Wilson used &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, I’m using &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; because that’s what BCD used. Having set this up Wilson (probably to save notation) sets &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and points out that this is a quadratic expression in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, so we can use the quadratic formula to solve it. We first need to expand the square, get everything on one side, and collect like terms.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p^{2} - 2p\hat{p} + \hat{p}^{2} &amp;amp;= tp - tp^{2} \\ 
+0 &amp;amp;= p^{2}\left(1+t\right) - p\left(2\hat{p}+t\right) + \hat{p}^{2}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Applying the &lt;a href=&#34;https://en.wikipedia.org/wiki/Quadratic_formula&#34;&gt;quadratic formula&lt;/a&gt; with
+&lt;span class=&#34;math inline&#34;&gt;\(a=(1+t)\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(b=-(2\hat{p}+t)\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(c=\hat{p}^{2}\)&lt;/span&gt;
+we get the solution to be:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+p &amp;amp;= \dfrac{2\hat{p} + t \pm \sqrt{  (2\hat{p}+t)^{2} - 4(1+t)\hat{p}^{2}  }}{2(1+t)} \\
+  &amp;amp; \\
+  &amp;amp; \mbox{(some algebra)} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{\hat{p} + \dfrac{t}{2} \pm \sqrt{ t\hat{p}(1-\hat{p}) + \dfrac{t^{2}}{4} }}{1+t}
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I’ve skipped a little algebra, but it’s only a couple lines at most. Once we’re here, we need to recall that &lt;span class=&#34;math inline&#34;&gt;\(t = \kappa^{2}/n\)&lt;/span&gt;, and substitute that back in. I’m going to separate the fraction at the &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt;, and pull a &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt; out from the denominator - thus multiplying the numerator by &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; - to cancel some of these hideous fractions-within-fractions.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+p  &amp;amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{n}\hat{p}(1-\hat{p}) + \kappa^{2}\dfrac{\kappa^{2}}{4n^{2}} }}{1+\kappa^{2}/n} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \dfrac{\sqrt{ \kappa^{2}n \hat{p}(1-\hat{p}) + \kappa^{2}n\dfrac{\kappa^{2}}{4n} }}{n+\kappa^{2}} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \dfrac{ \kappa\sqrt{n} \sqrt{ \hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n} }}{n+\kappa^{2}} \\
+  &amp;amp; \\
+  &amp;amp;= \dfrac{x + \dfrac{\kappa^{2}}{2}}{n+\kappa^{2}} \pm \kappa \dfrac{ \sqrt{n}}{n+\kappa^{2}} \sqrt{ \hat{p}(1-\hat{p}) + \dfrac{\kappa^{2}}{4n} } 
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note that on line 2, I also multiplied the last term under the radical by &lt;span class=&#34;math inline&#34;&gt;\(n/n = 1\)&lt;/span&gt;. This was to make it “match” the first term in having &lt;span class=&#34;math inline&#34;&gt;\(\kappa^{2}n\)&lt;/span&gt; that could be extracted from the radical. with this, we’ve arrived at the form of the interval I presented originally.&lt;/p&gt;
+&lt;p&gt;Remember that &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; was defined as a quantile from the normal distribution. By expressing the solution as I have, this results has the form of a traditional normal-based confidence interval:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\mbox{Estimate} \pm \mbox{Critical Value}\times\mbox{Std Error}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Agresi and Coull wanted to simplify this a bit, so they used the same estimator, defining:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+\tilde{x} &amp;amp;= x + \kappa^{2}/2 \\
+\tilde{n} &amp;amp;= n + \kappa^{2}   \\
+\tilde{p} &amp;amp;= \tilde{x} / \tilde{n}
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which is adding some number of trials, evenly split between successes and failures. They then use this &lt;span class=&#34;math inline&#34;&gt;\(\tilde{p}\)&lt;/span&gt; in the “standard” form of the confidence interval. In this way they create a much better-behaving confidence interval, but which is a bit more straightforward and easier to remember than the Wilson interval.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alternative-2-bayesian-method&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Alternative 2: Bayesian method&lt;/h3&gt;
+&lt;p&gt;Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower mathematical level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+X | p &amp;amp;\sim \mbox{Binomial(n,p)} \\
+p     &amp;amp;\sim \mbox{Beta}(\alpha, \beta)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Setting &lt;span class=&#34;math inline&#34;&gt;\(\alpha=\beta=1\)&lt;/span&gt; results in a uniform or “flat” prior, meaning we don’t have any initial judgment on whether &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is likely to be large or small, all possible values of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; are equally likely. Then, if we call the likelihood &lt;span class=&#34;math inline&#34;&gt;\(L(x|p)\)&lt;/span&gt; and the prior &lt;span class=&#34;math inline&#34;&gt;\(\pi(p)\)&lt;/span&gt;, the posterior for &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is found by:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\pi(p|x) \propto L(x|p)\pi(p)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;So, inserting the Binomial PMF for &lt;span class=&#34;math inline&#34;&gt;\(L(x|p)\)&lt;/span&gt; and the Beta PDF for &lt;span class=&#34;math inline&#34;&gt;\(\pi(p)\)&lt;/span&gt;, we get:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\pi(p|x) &amp;amp;\propto \binom{n}{x}p^{x}(1-p)^{n-x} \times \dfrac{p^{\alpha-1}(1-p)^{\beta-1}}{B(\alpha,\beta)}  \\
+&amp;amp;\propto p^{x - \alpha-1}(1-p)^{n - x + \beta-1}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Formally, we should be performing some integration, but since we’re really interested in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; here, I just want to see what the form of the resulting posterior will look like, and in this case it’s another Beta distribution, specifically, a &lt;span class=&#34;math inline&#34;&gt;\(\mbox{Beta}(x+\alpha, n-x+\beta)\)&lt;/span&gt; distribution.&lt;/p&gt;
+&lt;p&gt;With this posterior distribution, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size &lt;span class=&#34;math inline&#34;&gt;\(n=50\)&lt;/span&gt;, and observed &lt;span class=&#34;math inline&#34;&gt;\(x=1\)&lt;/span&gt; occurrences of the event of interest. Then taking &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \beta = 1\)&lt;/span&gt; (which is a uniform prior on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;), our posterior would look like below. Note that the x-axis is fairly truncated!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The estimate using the Wilson approach with 95% confidence, for reference, would be:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\tilde{p} = \dfrac{1 + 1.96^2/2}{50 + 1.96^2} = \dfrac{2.921}{53.84} = 0.0542
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparisons&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Comparisons&lt;/h2&gt;
+&lt;p&gt;So that’s an overview of three methods for estimating &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (both a point estimate and a confidence interval), but how to they compare to each other? We computed the coverage probability before, so let’s follow the same framework and compute the coverage probability for all four intervals. As before, this won’t be a simulation, but exact coverage probabilities.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We see here again that the standard interval performs poorly, but now we can see how the alternatives stack up against it. The Agresti-Coull interval tends to have the highest coverage probability, while the Wilson and Bayes intervals are very close (being on top of each other much of the time!).&lt;/p&gt;
+&lt;p&gt;In another way of thinking about the intervals, we can consider the &lt;em&gt;expected interval length&lt;/em&gt;. Recall when I computed the interval, I’d take a given value of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and compute the interval for all possible values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. So when I calculated the interval, I also obtained the length of the interval and computed a weighted average (with weight &lt;span class=&#34;math inline&#34;&gt;\(P(X=x)\)&lt;/span&gt;) of the lengths. We see that result below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Certainly for smaller sample sizes, the Wilson and Bayes intervals produce shorter intervals (that is: more precision on &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;). One may be tempted to think that for small &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; &lt;em&gt;and&lt;/em&gt; small &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; the standard interval is good here, but don’t forget the coverage probability: It drops precipitously at that point! Once we get much beyond &lt;span class=&#34;math inline&#34;&gt;\(n=100\)&lt;/span&gt; there isn’t much difference between the Wilson, Agresti-Coull, and Bayes intervals.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;In this post we explored estimating a Binomial proportion, seeing how the standard method is derived, and why it’s bad, and explored some alternatives (including their derivation). Based on the coverage probabilities and interval lengths, my suggestion would be to use either the Wilson or Bayes intervals - they both have good coverage, and tend to be shorter than the Agresti-Coull interval. The Agresti-Coull has slightly higher coverage probability, but that comes at the expense of a longer interval. That being said, it depends on the behavior you want to see. The Wilson and Bayes intervals seem to have 95% coverage probability &lt;em&gt;on average&lt;/em&gt;, while the Agresti-Coull interval seems to maintain &lt;em&gt;at least&lt;/em&gt; 95% coverage (or very close to it) throughout.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -615,7 +615,8 @@ One of my goals with these posts is to explain some basic statistical concepts."
 <ul>
 <li>Talk about the common approach usually taught in intro stats.</li>
 <li>Explain why that approach is not so great, for two reasons.</li>
-<li>Introduce two alternative approaches.</li>
+<li>Introduce two alternative approaches and explain how they arise.</li>
+<li>Compare the performance of the intervals.</li>
 </ul>
 </div>
 <div id="the-common-approach" class="section level2">
@@ -628,7 +629,7 @@ One of my goals with these posts is to explain some basic statistical concepts."
 <p><span class="math display">\[
 \hat{p} \pm Z_{\alpha/2} \sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}
 \]</span></p>
-<p>This is the confidence interval that is often (though not universally) taught in introductory statistics as the default.</p>
+<p>This is the confidence interval that is often (though not universally) taught in introductory statistics as the “default” or “standard.”</p>
 <p>As a side-note, it may be easier for beginners to “see” the asymptotic normality arising as a consequence of the normal approximation to the binomial distribution. If <span class="math inline">\(X \sim \mbox{Bin}(n,p)\)</span>, then <span class="math inline">\(X \stackrel{\text{aprx}}{\sim} N( np, np(1-p) )\)</span> under <a href="https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation">certain conditions</a> that are not consistent from source to source. There are <a href="https://math.stackexchange.com/questions/578935/how-to-prove-that-the-binomial-distribution-is-approximately-close-to-the-normal">different ways</a> to go about establishing this, one of which is via the Central Limit Theorem.</p>
 <div id="common-approach-the-math" class="section level3">
 <h3>Common Approach: The math</h3>
@@ -651,7 +652,7 @@ n\hat{p} &amp;= x \\
 \hat{p} &amp;= \dfrac{x}{n}
 \end{aligned}
 \]</span></p>
-<p>From there, we want the standard error of our MLE, which is just the square root of the variance.</p>
+<p>We also want the standard error of our MLE, which is just the square root of the variance.</p>
 <p><span class="math display">\[
 \begin{aligned}
 V\left[ \hat{p} \right] &amp;= V\left[ \dfrac{X}{n} \right] \\
@@ -681,7 +682,7 @@ z = \dfrac{\hat{p} - p}{ \sqrt{\dfrac{p(1-p)}{n}} }
 </div>
 <div id="why-the-common-approach-is-bad" class="section level3">
 <h3>Why the common approach is bad</h3>
-<p>So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the <em>coverage probability</em> of the confidence interval. If we consider the coverage probability across a range of <span class="math inline">\(p\)</span> values, we’ll see that it often drops below the nominal value. The figure below shows the coverage probability for each <span class="math inline">\(p\)</span> (in the interval <span class="math inline">\([0.02,0.98]\)</span>) at a selection of sample sizes.</p>
+<p>So why should we be looking beyond the basic approach? Because it’s bad. One way to understand that it’s bad is to look at the <em>coverage probability</em> of the confidence interval. If we consider the coverage probability across a range of <span class="math inline">\(p\)</span> values, we’ll see that it often drops below the nominal value, especially so at the tails, where <span class="math inline">\(p\)</span> is close to <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. The figure below shows the coverage probability for each <span class="math inline">\(p\)</span> (in the interval <span class="math inline">\([0.02,0.98]\)</span>) at a selection of sample sizes.</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>This is a similar pattern as shown in several figures from <a href="https://projecteuclid.org/euclid.ss/1009213286">Brown, Cai, &amp; DasGupta (2001)</a> (which I’ll abbreviate BCD), for example, the bottom-left panel here is the same as their Figure 3, just at a different resolution. We can alternatively switch, to look at a sequence of <span class="math inline">\(n\)</span> for a selection of <span class="math inline">\(p\)</span>.</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
@@ -695,7 +696,7 @@ We need to know the probability that, when <span class="math inline">\(p=0.20\)<
 <li>From <span class="math inline">\(\hat{p}\)</span>, compute the endpoints of the confidence interval.</li>
 <li>For each confidence interval, determine whether the true value of <span class="math inline">\(p\)</span> has been captured.</li>
 <li>Identify the bounds of <span class="math inline">\(X\)</span> which result in “successful” confidence intervals. That is, determine <span class="math inline">\(X_{max}\)</span> and <span class="math inline">\(X_{min}\)</span>, the largest and smallest values of <span class="math inline">\(X\)</span> which produce a confidence interval which captures <span class="math inline">\(p\)</span>. For example, when <span class="math inline">\(p=0.20\)</span>, if <span class="math inline">\(X=60\)</span> and <span class="math inline">\(n=100\)</span>, then the CI is <span class="math inline">\((0.504, 0.696)\)</span>, which does not capture <span class="math inline">\(p\)</span>.</li>
-<li>Compute the probability that <span class="math inline">\(X\)</span> is contained in the interval <span class="math inline">\([X_{min}, X_{min}]\)</span>. Since we know <span class="math inline">\(p\)</span>, this is just a binomial probability: <span class="math inline">\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)</span>. Note we subtract 1, because <span class="math inline">\(X_{min}\)</span> is a valid value, so <span class="math inline">\(X\)</span> needs to be strictly below <span class="math inline">\(X_{min}\)</span> for the interval to fail.</li>
+<li>Compute the probability that <span class="math inline">\(X\)</span> is contained in the interval <span class="math inline">\([X_{min}, X_{max}]\)</span>. Since we know <span class="math inline">\(p\)</span>, this is just a binomial probability: <span class="math inline">\(P( X \leq X_{max} ) - P( X \leq X_{min}-1 )\)</span>. Note we subtract 1, because <span class="math inline">\(X_{min}\)</span> is a valid value, so <span class="math inline">\(X\)</span> needs to be strictly below <span class="math inline">\(X_{min}\)</span> for the interval to fail.</li>
 <li>Repeat steps 1-6 for a sequence of <span class="math inline">\(p\)</span> from some “small” value to some “large” value (as indicated, I chose <span class="math inline">\(0.02\)</span> to <span class="math inline">\(0.98\)</span>).</li>
 </ol>
 <p>Developing this idea and creating the code to produce a plot like the above would probably be a good exercise for a low-level statistics course that includes a probability component.</p>
@@ -790,7 +791,7 @@ p  &amp;= \dfrac{\hat{p} + \dfrac{\kappa^{2}}{2n} \pm \sqrt{ \dfrac{\kappa^{2}}{
 </div>
 <div id="alternative-2-bayesian-method" class="section level3">
 <h3>Alternative 2: Bayesian method</h3>
-<p>Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:</p>
+<p>Lately I’ve been going to the Bayesian approach to this problem. This might get slightly more technical if you’re at a lower mathematical level. For Bayesian analysis, we define a likelihood for the data, and a prior for the parameters. In this case, the data are Binomial, and the only parameter is the proportion, for which a Beta distribution works well. So we will assume:</p>
 <p><span class="math display">\[
 \begin{aligned}
 X | p &amp;\sim \mbox{Binomial(n,p)} \\
@@ -809,9 +810,9 @@ p     &amp;\sim \mbox{Beta}(\alpha, \beta)
 \end{aligned}
 \]</span></p>
 <p>Formally, we should be performing some integration, but since we’re really interested in <span class="math inline">\(p\)</span> here, I just want to see what the form of the resulting posterior will look like, and in this case it’s another Beta distribution, specifically, a <span class="math inline">\(\mbox{Beta}(x+\alpha, n-x+\beta)\)</span> distribution.</p>
-<p>With this posterior distribution, we can estimate <span class="math inline">\(p\)</span> in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size <span class="math inline">\(n=50\)</span>, and observed <span class="math inline">\(x=1\)</span> occurrences of the event of interest. Then taking <span class="math inline">\(\alpha = \beta = 1\)</span> (the uniform prior on <span class="math inline">\(p\)</span>), our posterior would look like below. Note that the x-axis is fairly truncated!</p>
+<p>With this posterior distribution, we can estimate <span class="math inline">\(p\)</span> in several ways. We can take the mean or median as a point estimate, and we can obtain a credible interval (the Bayesian answer to the confidence interval). For example, say we had a sample of size <span class="math inline">\(n=50\)</span>, and observed <span class="math inline">\(x=1\)</span> occurrences of the event of interest. Then taking <span class="math inline">\(\alpha = \beta = 1\)</span> (which is a uniform prior on <span class="math inline">\(p\)</span>), our posterior would look like below. Note that the x-axis is fairly truncated!</p>
 <p><img src="/post-stats/2020-11-25-estimating-binomial-proportions-rare-events.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>The Wilson estimate, for reference, would be:</p>
+<p>The estimate using the Wilson approach with 95% confidence, for reference, would be:</p>
 <p><span class="math display">\[
 \tilde{p} = \dfrac{1 + 1.96^2/2}{50 + 1.96^2} = \dfrac{2.921}{53.84} = 0.0542
 \]</span></p>
@@ -841,6 +842,8 @@ p     &amp;\sim \mbox{Beta}(\alpha, \beta)
 <div class="article-tags">
   
   <a class="badge badge-light" href="/tags/categorical/">categorical</a>
+  
+  <a class="badge badge-light" href="/tags/proportion/">proportion</a>
   
   <a class="badge badge-light" href="/tags/binomial/">binomial</a>
   
@@ -1082,6 +1085,16 @@ p     &amp;\sim \mbox{Beta}(\alpha, \beta)
   
   <div class="container">
     <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+        
+  </p>
   
 
   <p class="powered-by">
