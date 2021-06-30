@@ -32,7 +32,7 @@
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 P(X = k) = \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(k \in \left( \max(0,n+M-N)\)&lt;/span&gt; and&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(k \in \max(0,n+M-N)\)&lt;/span&gt; and&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the size of the population.&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; is the number of successes (or whatever event of interest) in the population.&lt;/li&gt;
@@ -88,12 +88,12 @@ V[X/n] = \sigma^{2}_{p} &amp;amp;= \dfrac{1}{n} \dfrac{M}{N} \dfrac{N-M}{N} \dfr
 &lt;p&gt;Clear as mud, right? I think of it this way: We have a population of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; units, of which &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; are defectives (and so there is proportion &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; defectives). But we can consider a more general process from which our population was drawn. In this more general “superpopulation” there is some underlying proportion of defectives, which we will denote &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;. With this framework, we can consider the population as being a sample of size &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; from the superpopulation.&lt;/p&gt;
 &lt;p&gt;The next important bit of this is that we separate the population into the &lt;em&gt;observed&lt;/em&gt; and &lt;em&gt;unobserved&lt;/em&gt; samples. These are effectively two independent samples from a Binomial distribution, of sizes &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N-n\)&lt;/span&gt;, respectively. The diagram below is how I picture it.&lt;/p&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;grViz html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;diagram&#34;:&#34;digraph {\n  graph [layout = dot, rankdir = LR]\n\n  node [shape = rectangle, style = filled, fillcolor = lightblue]\n  A [label = \&#34;Superpopulation\n\n&lt;U+0001D70B&gt;\&#34;, shape = circle, width=3, fontsize=28]\n  \n  \n  subgraph cluster_population {\n    style=dotted; label=\&#34;Population\&#34;; fontsize=24;\n    node [shape = rectangle, style = filled, fillcolor = lightblue, width=2]\n  { \n    B [label = \&#34;Observed Sample\n\nx, n\&#34;, shape = circle, fontsize=20]\n    C [label = \&#34;Unobserved Sample\n\nM-x, N-n\&#34;, shape = circle, fontsize=20]\n  }\n  };\n\n  # edge definitions with the node IDs\n  A -&gt; B \n  A -&gt; C \n  B -&gt; A [style=dashed]\n  A -&gt; C [style=dashed]\n\n}&#34;,&#34;config&#34;:{&#34;engine&#34;:&#34;dot&#34;,&#34;options&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;diagram&#34;:&#34;digraph {\n  graph [layout = dot, rankdir = LR]\n\n  node [shape = rectangle, style = filled, fillcolor = lightblue]\n  A [label = \&#34;Superpopulation\n\npi\&#34;, shape = circle, width=3, fontsize=28]\n  \n  \n  subgraph cluster_population {\n    style=dotted; label=\&#34;Population\&#34;; fontsize=24;\n    node [shape = rectangle, style = filled, fillcolor = lightblue, width=2]\n  { \n    B [label = \&#34;Observed Sample\n\nx, n\&#34;, shape = circle, fontsize=20]\n    C [label = \&#34;Unobserved Sample\n\nM-x, N-n\&#34;, shape = circle, fontsize=20]\n  }\n  };\n\n  # edge definitions with the node IDs\n  A -&gt; B \n  A -&gt; C \n  B -&gt; A [style=dashed]\n  A -&gt; C [style=dashed]\n\n}&#34;,&#34;config&#34;:{&#34;engine&#34;:&#34;dot&#34;,&#34;options&#34;:null}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;p&gt;In this, a solid arrow denotes the random sampling, and a dashed arrow denotes inference. So from the superpopulation we sample the population, but we conceptualize two independent samples: One which we observe, and the other which we do not. Then the &lt;em&gt;observed&lt;/em&gt; sample is used to infer about the superpopulation, and that information about the superpopulation is used to make probabalistic statements about the unobserved sample - that is: The rest of the population.&lt;/p&gt;
 &lt;p&gt;Jones &amp;amp; Johnson (2015) tell that inference about &lt;span class=&#34;math inline&#34;&gt;\(U = M-x\)&lt;/span&gt; (from which we can derive &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;, and therefore &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;) will make use of a &lt;a href=&#34;https://en.wikipedia.org/wiki/Beta-binomial_distribution&#34;&gt;Beta-binomial distribution&lt;/a&gt;, which I’ll denote &lt;span class=&#34;math inline&#34;&gt;\(betabin( N, \alpha, \beta)\)&lt;/span&gt;. This distribution has the following PDF:&lt;/p&gt;
-&lt;p&gt;$$
-P(U=k) =  ,&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+P(U=k) = \binom{N}{k} \dfrac{B\left(k+\alpha, N-k+\beta \right)}{B\left(\alpha, \beta \right)},
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(B(\cdot,\cdot)\)&lt;/span&gt; is the Beta function (a core feature of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Beta_distribution&#34;&gt;Beta distribution&lt;/a&gt;). It will be useful to see the form of this:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 B\left(\alpha, \beta \right) = \int_{0}^{1} x^{\alpha-1} (1-x)^{\beta-1} dx
@@ -124,25 +124,25 @@ f(U) = \int_{0}^{1} f(U|\pi) f(\pi)d\pi
 f(U|k) = \int_{0}^{1} f(U|\pi) f(\pi|k) d\pi
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;This allows us to take advantage of what &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; told us about &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;. The dependence on &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; gets “inherited” from &lt;span class=&#34;math inline&#34;&gt;\(f(\pi|k)\)&lt;/span&gt;. The math is below, though for ease of notation, I’m going to write &lt;span class=&#34;math inline&#34;&gt;\(\alpha^{*}=k+\alpha\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta^{*} = n-k+\beta\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;$$
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-f(U|k) &amp;amp;= &lt;em&gt;{0}^{1} f(U|) f(|k)f(|k) d\
-&amp;amp; \
-&amp;amp;= &lt;/em&gt;{0}^{1}  &lt;sup&gt;{u}(1-)&lt;/sup&gt;{N-n-u} 
-&lt;sup&gt;{&lt;/sup&gt;{&lt;em&gt;}-1} (1-)&lt;sup&gt;{&lt;/sup&gt;{&lt;/em&gt;}-1} d
-&amp;amp; \
-&amp;amp;\
-&amp;amp;= &lt;br /&gt;
-_{0}^{1} &lt;sup&gt;{u+&lt;/sup&gt;{&lt;em&gt;}-1}(1-)&lt;sup&gt;{N-n-u+&lt;/sup&gt;{&lt;/em&gt;}-1} d
-\end{aligned}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
+f(U|k) &amp;amp;= \int_{0}^{1} f(U|\pi) f(\pi|k)f(\pi|k) d\pi \\
+&amp;amp; \\
+&amp;amp;= \int_{0}^{1} \binom{N-n}{u} \pi^{u}(1-\pi)^{N-n-u} \dfrac{1}{B(\alpha^{*}, \beta^{*})} 
+   \pi^{\alpha^{*}-1} (1-\pi)^{\beta^{*}-1} d\pi
+&amp;amp; \\
+&amp;amp;\\
+&amp;amp;= \binom{N-n}{u}\dfrac{1}{B(\alpha^{*}, \beta^{*})}  
+   \int_{0}^{1} \pi^{u+\alpha^{*}-1}(1-\pi)^{N-n-u+\beta^{*}-1}   d\pi
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If you look back to the definition of the Beta function, you’ll note that the integral here is exactly that, so we can simplify this to:&lt;/p&gt;
-$$
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 f(U|k) &amp;amp;= \binom{N-n}{u}\dfrac{1}{B(\alpha^{*}, \beta^{*})}  
           B( u + \alpha^{*}, N-n-u+\beta^{*})
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;This, we can note, is precisely the form of the Beta-binomial distribution. So we can say that:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 U|k \sim \mbox{betabinomial}( N-n, k+\alpha, n-k+\beta)
