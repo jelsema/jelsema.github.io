@@ -1,0 +1,84 @@
+---
+title: ""
+---
+
+
+
+:::: {.columns}
+
+::: {.column width="25%" .text-center}
+![](_images/general/avatar.jpg){.rounded-circle}
+
+*Principle Member of Technical Staff*
+
+Sandia National Laboratories
+
+Statistician
+
+Data Enthusiast
+
+Nerd
+
+
+:::
+
+::: {.column width="5%" .text-center}
+:::
+
+
+
+::: {.column width="70%"}
+# Biography
+
+I’m a Statistician currently working as part of a statistics group at Sandia National Laboratories. 
+
+My PhD advisor was 
+[Rajib Paul](https://ech.charlotte.edu/directory/rajib-paul/) (now at UNC-Charlotte), 
+who introduced me to spatial statistics for large datasets. We focused on developing methods for 
+cases when normality was not a suitable assumption.
+
+After finishing my PhD [Shyamal Peddada](https://www.niehs.nih.gov/research/atniehs/labs/bcb/staff/peddada) 
+offered me a postdoctoral research position at the National 
+Institute of Environmental Health Sciences. We worked on some spatial methods, 
+but he also introduced me to the area of order-restricted inference. With him I wrote the R package 
+[CLME](https://github.com/jelsema/CLME), which implements a constrained linear mixed effects model 
+using nonparametric bootstrap for inference.
+
+Since joining Sandia my research efforts have been drawn to what is needed for the problems at hand. 
+This has brought me to investigate methods for reliability. I've also started dabbling with robust 
+nonparametric methods once again.
+
+Eventually this website will provide some links to R packages, research papers, or some other miscellaneous thoughts I feel like writing a bit about.
+
+
+:::: {.columns}
+:::: {.column width="45%"}
+### Interests
+
+- Reliability
+- Statistical computing
+- Robust Nonparametrics
+
+::::
+:::: {.column width="5%" .text-center}
+::::
+:::: {.column width="50%"}
+### Education
+
+- PhD in Statistics, 2013<br>
+  Western Michigan University
+
+- MS in Applied Statistics, 2011<br>
+  Western Michigan University
+
+- BS Statistics, 2008<br>
+  Grand Valley State University
+
+::::
+::::
+
+
+
+:::
+
+::::
