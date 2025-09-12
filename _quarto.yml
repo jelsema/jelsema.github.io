@@ -13,9 +13,13 @@ website:
 
 format:
   html:
-    theme: Spacelab  # Cerulean, Cosmo, Lumen, 
-    # css: styles.css
+    theme: 
+      light: Spacelab  # Cerulean, Cosmo, Lumen, 
+      dark: Spacelab
+    toggle: true
+    preferred: light
     toc: true
+    # css: styles.css
 
 editor: source
 
