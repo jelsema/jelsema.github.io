@@ -15,7 +15,7 @@ format:
   html:
     theme: 
       light: Spacelab  # Cerulean, Cosmo, Lumen, 
-      dark: Spacelab
+      dark: [Spacelab, theme-dark.scss]
     toggle: true
     preferred: light
     toc: true
