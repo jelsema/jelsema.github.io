@@ -1,0 +1,6 @@
+/* css styles */
+
+.main-container {
+  max-width: 1200px;   /* default is ~960px */
+  min-width: 600px;   /* default is ~960px */
+}
