@@ -6,18 +6,15 @@ title: ""
 
 :::: {.columns}
 
-::: {.column width="25%" .text-center}
+::: {.column width="35%" .text-center}
 ![](_images/general/avatar.jpg){.rounded-circle}
 
 *Principle Member of Technical Staff*
 
 Sandia National Laboratories
 
-Statistician
 
-Data Enthusiast
-
-Nerd
+Statistician | Data Enthusiast
 
 
 :::
@@ -27,7 +24,7 @@ Nerd
 
 
 
-::: {.column width="70%"}
+::: {.column width="60%"}
 # Biography
 
 I’m a Statistician currently working as part of a statistics group at Sandia National Laboratories. 

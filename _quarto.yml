@@ -20,7 +20,8 @@ format:
     toggle: true
     preferred: light
     toc: true
-    # css: styles.css
+    page-layout: full
+    css: styles.css
 
 editor: source
 
