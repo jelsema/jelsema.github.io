@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "research/paper2.html",
+    "href": "research/paper2.html",
+    "title": "Reliability",
+    "section": "",
+    "text": "This is a placeholder to talk about reliability work"
+  },
+  {
     "objectID": "posts_other/2020-07-24-a-scientific-smell-test.en.html",
     "href": "posts_other/2020-07-24-a-scientific-smell-test.en.html",
     "title": "A Scientific Smell Test",
@@ -40,5 +47,12 @@
     "title": "Welcome to my site",
     "section": "",
     "text": "Welcome! If you’ve found your way to this page … well, I’m more than a little surprised. This is my personal website. I’m not entirely sure what I’ll be doing here. My plan at the moment is to use it mainly for:\n\nListing professional things like publications independently of my place of employment.\nHost the slides for talks or workshops that I give.\n\nI may have some posts about topics that pique my interest. This would likely be my thoughts on some bit of Statistics or science that came across my screen.\nI’ve been talking about science and statistics in the context of COVID-19 on social media for a while now. I may transition some of that here, since social media isn’t usually conducive to the long-form comments I make often enough."
+  },
+  {
+    "objectID": "research/paper1.html",
+    "href": "research/paper1.html",
+    "title": "Robust Work",
+    "section": "",
+    "text": "This is a placeholder to talk about robust work"
   }
 ]

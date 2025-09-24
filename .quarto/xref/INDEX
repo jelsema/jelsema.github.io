@@ -13,5 +13,11 @@
   },
   "about/background.md": {
     "background.html": "ec718b39"
+  },
+  "research/paper1.qmd": {
+    "paper1.html": "64d17f9f"
+  },
+  "research/paper2.qmd": {
+    "paper2.html": "508daf63"
   }
 }

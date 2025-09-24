@@ -4,14 +4,19 @@ project:
 
 website:
   title: "Probably Reliable"
-  favicon: _images/general/favicon.ico
+  favicon: _images/general/beta.ico
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: https://jelsema.github.io/ppcb/
         text: PPCB
-
+      # - text: Research
+      #   menu:
+      #     - text: "Paper 1"
+      #       href: research/paper1.qmd
+      #     - text: "Paper 2"
+      #       href: research/paper2.qmd
 format:
   html:
     theme: 
