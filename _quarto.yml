@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Probably Reliable"
-  favicon: _images/general/beta.ico
+  favicon: images/general/beta.ico
   navbar:
     left:
       - href: index.qmd

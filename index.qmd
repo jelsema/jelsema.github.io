@@ -7,7 +7,7 @@ title: ""
 :::: {.columns}
 
 ::: {.column width="35%" .text-center}
-![](_images/general/avatar.jpg){.rounded-circle}
+![](images/general/avatar.jpg){.rounded-circle}
 
 *Principle Member of Technical Staff*
 
