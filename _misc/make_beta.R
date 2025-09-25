@@ -43,3 +43,29 @@ points(
 
 dev.off()
 
+
+
+dat00 <- tibble( x = x, y=y )
+dat01 <- dat00 |> filter( x <= qbeta(0.9,2,11) )
+dat02 <- dat00 |> filter( x >= qbeta(0.9,2,11) )
+
+
+
+ggplot( dat01, aes(x=x, y=y) ) + 
+  theme_void() + 
+  geom_area( fill="steelblue3" ) + 
+  geom_area( data=dat02, fill="indianred3" )
+
+
+ggsave( filename="beta.png", 
+        width = 1, height = 1, 
+        dpi = 300, bg = "transparent")
+
+
+
+
+
+
+
+
+
